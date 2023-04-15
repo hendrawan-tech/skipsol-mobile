@@ -36,6 +36,8 @@ android {
                            'src/main/res/layouts/auth',
                            'src/main/res/layouts/home',
                            'src/main/res/layouts/profile',
+                           'src/main/res/assets/icons',
+                           'src/main/res/assets/images',
             ]
         }
     }
