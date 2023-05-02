@@ -23,6 +23,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    buildFeatures{
+        viewBinding true
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -35,7 +38,7 @@ android {
             res.srcDirs = [
                 'src/main/res',
                 'src/main/res/layouts/auth',
-                'src/main/res/layouts/home',
+                'src/main/res/layouts/navbar',
                 'src/main/res/layouts/profile',
                 'src/main/res/assets/icons',
                 'src/main/res/assets/images'

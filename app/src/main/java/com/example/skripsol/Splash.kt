@@ -1,4 +1,4 @@
-package com.example.skripsol.home
+package com.example.skripsol
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
