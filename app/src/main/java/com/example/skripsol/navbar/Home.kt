@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.skripsol.R
+import de.hdodenhof.circleimageview.CircleImageView
+
 
 class Home : Fragment() {
     override fun onCreateView(

@@ -7,17 +7,16 @@ import com.example.skripsol.R
 import com.example.skripsol.databinding.HeadFragmentBinding
 
 
-class HeadFragment : AppCompatActivity() {
+class HeadFragment : AppCompatActivity()  {
     private lateinit var binding: HeadFragmentBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+//        setContentView(R.layout.head_fragment)
         binding = HeadFragmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
         replaceFragment(Home())
         binding.navigation.setOnItemSelectedListener {
-            print(it.itemId)
             when (it.itemId) {
                 R.id.bottom_home -> replaceFragment(Home())
                 R.id.botom_chat -> replaceFragment(Chat())
