@@ -18,5 +18,7 @@ class Home : Fragment() {
         return inflater.inflate(R.layout.home_screen, container, false)
     }
 
+    
+
 
 }
