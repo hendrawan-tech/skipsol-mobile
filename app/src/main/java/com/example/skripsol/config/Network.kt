@@ -4,7 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object Network {
-    private const val BASE_URL = "url"
+    private const val BASE_URL = "https://dummyjson.com/"
 
     val instance: Endpoint by lazy {
         val retrofit = Retrofit.Builder()
