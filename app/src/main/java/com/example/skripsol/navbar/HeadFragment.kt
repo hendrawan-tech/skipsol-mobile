@@ -17,7 +17,7 @@ class HeadFragment : AppCompatActivity()  {
 //        setContentView(R.layout.head_fragment)
         binding = HeadFragmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(Chat())
+        replaceFragment(Home())
         binding.navigation.setOnTabSelectListener(object: AnimatedBottomBar.OnTabSelectListener {
             override fun onTabSelected(lastIndex: Int, lastTab: AnimatedBottomBar.Tab?, newIndex: Int, newTab: AnimatedBottomBar.Tab) {
                 when (newTab.id) {
