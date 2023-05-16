@@ -41,18 +41,19 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:text="Selamat Datang,"
-                    android:textColor="@color/font_secondary_color"
-                    android:textSize="12sp" />
+                    android:textAppearance="@style/text_regular_secondary"
+                    android:textSize="12sp"
+                     />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/user_username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:fontFamily="@font/golos_text_bold"
+                    android:textAppearance="@style/text_extra_bold_primary"
                     android:text="USER LOREM IPSUM"
-                    android:textColor="@color/primary_color"
-                    android:textSize="12sp" />
+
+                    />
 
             </LinearLayout>
 
@@ -91,11 +92,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="12dp"
                         android:layout_marginTop="15dp"
+                        android:textAppearance="@style/text_regular_plain"
                         android:text="E41212178" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textAppearance="@style/text_bold_plain"
                         android:layout_marginLeft="12dp"
                         android:layout_marginTop="15dp"
                         android:text="User Lorem Ipsum" />
@@ -104,6 +107,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="12dp"
+                        android:textAppearance="@style/text_regular_plain"
                         android:layout_marginTop="15dp"
                         android:text="Teknik Informatika" />
 
@@ -111,10 +115,12 @@
                         android:layout_width="165dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="12dp"
+                        android:textAppearance="@style/text_regular_plain"
                         android:layout_marginTop="5dp"
                         android:text="Politeknik Negeri Jember - Kampus Bondowoso" />
 
                     <LinearLayout
+                        android:layout_marginTop="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -124,14 +130,15 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="12dp"
                             android:layout_marginBottom="25dp"
+                            android:textAppearance="@style/text_semi_bold_plain"
                             android:text="Status Skripsi :" />
 
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="12dp"
                             android:layout_marginBottom="25dp"
-                            android:text="Lulus Revisi" />
+                            android:textAppearance="@style/text_semi_bold_plain"
+                            android:text=" Lulus Revisi" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -159,6 +166,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/user_card"
+                    android:textSize="16sp"
                     android:layout_marginLeft="12dp"
                     android:layout_marginTop="15dp"
                     android:text="Menu"
@@ -189,7 +197,7 @@
                                 app:cardBackgroundColor="@color/white_color"
                                 app:cardCornerRadius="8dp"
                                 app:strokeColor="@color/primary_color"
-                                app:strokeWidth="2dp">
+                                app:strokeWidth="1dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -209,7 +217,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
-                                android:text="Update Status"
+                                android:text="Input Judul TA"
                                 android:textAppearance="@style/text_regular_font_primary"
                                 android:textSize="12sp" />
 
@@ -228,7 +236,7 @@
                                 app:cardBackgroundColor="@color/white_color"
                                 app:cardCornerRadius="8dp"
                                 app:strokeColor="@color/primary_color"
-                                app:strokeWidth="2dp">
+                                app:strokeWidth="1dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -248,7 +256,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
-                                android:text="Update Status"
+                                android:text="Monitoring"
                                 android:textAppearance="@style/text_regular_font_primary"
                                 android:textSize="12sp" />
 
@@ -268,7 +276,7 @@
                                 app:cardBackgroundColor="@color/white_color"
                                 app:cardCornerRadius="8dp"
                                 app:strokeColor="@color/primary_color"
-                                app:strokeWidth="2dp">
+                                app:strokeWidth="1dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -288,7 +296,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
-                                android:text="Update Status"
+                                android:text="Form Pengajuan"
                                 android:textAppearance="@style/text_regular_font_primary"
                                 android:textSize="12sp" />
 
@@ -307,7 +315,7 @@
                                 app:cardBackgroundColor="@color/white_color"
                                 app:cardCornerRadius="8dp"
                                 app:strokeColor="@color/primary_color"
-                                app:strokeWidth="2dp">
+                                app:strokeWidth="1dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
