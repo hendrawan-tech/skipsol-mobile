@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skripsol.R
-import com.example.skripsol.navbar.Adapter.CardAdapter
-import com.example.skripsol.navbar.Adapter.CardItem
+import com.example.skripsol.navbar.ChatAdapter.CardAdapter
+import com.example.skripsol.navbar.ChatAdapter.CardItem
 
 class Chat : Fragment() {
     private lateinit var recyclerView: RecyclerView

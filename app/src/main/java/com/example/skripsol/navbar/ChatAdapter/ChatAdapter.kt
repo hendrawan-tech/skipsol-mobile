@@ -1,4 +1,4 @@
-package com.example.skripsol.navbar.Adapter
+package com.example.skripsol.navbar.ChatAdapter
 
 import android.view.LayoutInflater
 import android.view.View
