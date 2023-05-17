@@ -2,7 +2,6 @@ package com.example.skripsol.navbar
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import com.example.skripsol.R
 import com.example.skripsol.databinding.HeadFragmentBinding
@@ -14,10 +13,10 @@ class HeadFragment : AppCompatActivity()  {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.head_fragment)
+        setContentView(R.layout.input_judul_ta_screen)
         binding = HeadFragmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(Profile())
+        replaceFragment(Home())
         binding.navigation.setOnTabSelectListener(object: AnimatedBottomBar.OnTabSelectListener {
             override fun onTabSelected(lastIndex: Int, lastTab: AnimatedBottomBar.Tab?, newIndex: Int, newTab: AnimatedBottomBar.Tab) {
                 when (newTab.id) {
