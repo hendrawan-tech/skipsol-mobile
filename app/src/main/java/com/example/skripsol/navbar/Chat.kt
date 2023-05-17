@@ -25,7 +25,7 @@ class Chat : Fragment() {
 
         // Tambahkan item ke daftar
         for (i in 1..10) {
-            itemList.add(ChatData(R.drawable.img_model_profile_home, "Judul $i", "Deskripsi $i"))
+            itemList.add(ChatData(R.drawable.img_model_profile, "Judul $i", "Deskripsi $i"))
         }
 
         // Atur layout manager dan adapter

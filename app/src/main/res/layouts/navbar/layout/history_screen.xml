@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/appbar_chat"
+            android:id="@+id/appbar_riwayat"
             android:layout_width="match_parent"
             android:layout_height="62dp"
             android:layout_marginBottom="20dp"
@@ -41,7 +41,7 @@
             android:id="@+id/search_lecture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/appbar_chat"
+            android:layout_below="@id/appbar_riwayat"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
             android:background="@drawable/rounded_border"
@@ -53,7 +53,7 @@
             app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editText"
+                android:id="@+id/search_judul"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/golos_text_regular"

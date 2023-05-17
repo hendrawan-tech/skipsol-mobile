@@ -25,6 +25,7 @@
 <!--                android:value="" />-->
 <!--        </activity>-->
         <activity
+            android:screenOrientation="portrait"
             android:name=".navbar.HeadFragment"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">

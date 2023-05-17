@@ -27,7 +27,7 @@
                 android:layout_height="49dp"
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="25dp"
-                android:src="@drawable/img_model_profile_home" />
+                android:src="@drawable/img_model_profile" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
