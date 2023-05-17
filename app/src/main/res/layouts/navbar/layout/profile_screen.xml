@@ -343,16 +343,12 @@
                     android:layout_height="wrap_content"
                     app:cornerRadius="12dp"
                     android:layout_marginBottom="35dp"
-                    android:text="Filled Button"
+                    android:text="LOG OUT"
                     style="@style/Widget.MaterialComponents.Button"
                     android:backgroundTint="@color/primary_color"
-                    android:textColor="@android:color/white"
+                    android:textAppearance="@style/text_bold_plain"
+                    android:textColor="@color/white_color"
                     />
-
-
-
-
-
             </LinearLayout>
         </RelativeLayout>
 
