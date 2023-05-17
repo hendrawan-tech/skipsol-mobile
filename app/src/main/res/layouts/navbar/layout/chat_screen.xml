@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,35 +13,65 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <com.google.android.material.appbar.MaterialToolbar
-            android:layout_width="match_parent"
-            android:layout_marginBottom="20dp"
-            android:layout_height="70dp"
             android:id="@+id/appbar_chat"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/toolbar_bottom_border"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
-                android:text="Chat"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:text="Chat"
                 android:textAppearance="@style/text_bold_font_primary"
-                android:textSize="16sp"
-                android:layout_height="wrap_content"/>
+                android:textSize="16sp" />
 
         </com.google.android.material.appbar.MaterialToolbar>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/search_lecture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/appbar_chat"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/rounded_border"
+            app:boxBackgroundMode="none"
+            android:layout_marginBottom="20dp"
+            app:endIconMode="custom"
+            app:endIconDrawable="@drawable/icon_search"
+            app:endIconTint="@color/primary_color"
+            app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/golos_text_regular"
+                android:hint="Cari dosen ..."
+                android:textColor="@color/font_primary_color"
+                android:paddingLeft="20dp"
+                android:padding="15dp"
+                android:textColorHint="@color/font_secondary_variant" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycle_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/appbar_chat"/>
+            android:layout_below="@+id/search_lecture" />
 
 
     </RelativeLayout>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -157,6 +157,17 @@
         <item name="fontFamily">@font/golos_text_extra_bold</item>
     </style>
 
+    <style name="TextInputLayoutCircular">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.TextInputLayout.Circle</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.TextInputLayout.Circle" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+        <item name="boxStrokeColor">@color/primary_color</item>
+    </style>
+
+
 
 
 </resources>
