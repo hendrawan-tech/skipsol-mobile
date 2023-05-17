@@ -1,4 +1,4 @@
-package com.example.skripsol.navbar.ChatAdapter
+package com.example.skripsol.navbar.RiwayatJudulAdapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,11 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.skripsol.R
 import de.hdodenhof.circleimageview.CircleImageView
 
-
-class ChatAdapter(private val itemList: List<ChatData>) : RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
+class RiwayatJudulAdapter(private val itemList: MutableList<RiwayatJudulData>) : RecyclerView.Adapter<RiwayatJudulAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycle_chat_screen, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycle_history_screen, parent, false)
         return ViewHolder(view)
     }
 
@@ -28,8 +27,8 @@ class ChatAdapter(private val itemList: List<ChatData>) : RecyclerView.Adapter<C
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val imageView: CircleImageView = itemView.findViewById(R.id.lecture_profile)
-        val titleTextView: TextView = itemView.findViewById(R.id.lecture_name)
-        val subtitleTextView: TextView = itemView.findViewById(R.id.lecture_number)
+        val imageView: CircleImageView = itemView.findViewById(R.id.history_title_image)
+        val titleTextView: TextView = itemView.findViewById(R.id.history_title)
+        val subtitleTextView: TextView = itemView.findViewById(R.id.history_date)
     }
 }
