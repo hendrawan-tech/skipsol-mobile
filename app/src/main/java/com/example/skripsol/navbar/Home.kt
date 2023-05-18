@@ -38,7 +38,7 @@ class Home : Fragment() {
         var valFakultas: String = ""
         var valKampus: String = ""
 
-        if (tmpFakultas.size >= 2) {
+        if (tmpFakultas.size > 2) {
             valFakultas = "${tmpFakultas[0]} ${tmpFakultas[1]}"
             valKampus = tmpFakultas[2]
         } else {

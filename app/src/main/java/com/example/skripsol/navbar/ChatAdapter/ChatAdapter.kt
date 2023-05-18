@@ -1,5 +1,7 @@
 package com.example.skripsol.navbar.ChatAdapter
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,11 +29,17 @@ class ChatAdapter(private val itemList: List<Map<String, Any>>) :
         fun bind(res: Map<String, Any>) {
             with(itemView) {
                 val imageView: CircleImageView = itemView.findViewById(R.id.lecture_profile)
-                val titleTextView: TextView = itemView.findViewById(R.id.lecture_name)
-                val subtitleTextView: TextView = itemView.findViewById(R.id.lecture_number)
+                val dosenName: TextView = itemView.findViewById(R.id.lecture_name)
+                val dosenPhoneNumber: TextView = itemView.findViewById(R.id.lecture_number)
 
-                titleTextView.text = res["name"].toString()
-                subtitleTextView.text = res["phone_number"].toString() ?: "-"
+                dosenName.text = res["name"].toString()
+                dosenPhoneNumber.text = res["phone_number"].toString() ?: "-"
+
+                itemView.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    intent.data = Uri.parse("https://api.whatsapp.com/send?phone=${dosenPhoneNumber.text}")
+                    itemView.context.startActivity(intent)
+                }
             }
         }
     }
