@@ -1,21 +1,17 @@
 package com.example.skripsol.config
 
-import com.example.skripsol.model.AuthModel
-import com.example.skripsol.model.TestModel
+import com.example.skripsol.model.LoginModel
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface Endpoint {
-    @GET("test")
-    fun getData(): Call<ArrayList<TestModel>>
+    @GET("user/profile")
+    fun getProfile(@Header("Authorization") token: String): Call<Map<String, Any>>
 
     @FormUrlEncoded
-    @POST("auth/login")
+    @POST("login")
     fun login(
-        @Field("username") username: String,
+        @Field("email") email: String,
         @Field("password") password: String
-    ): Call<AuthModel>
+    ): Call<Map<String, Any>>
 }
