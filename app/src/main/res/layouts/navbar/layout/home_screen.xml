@@ -92,6 +92,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="12dp"
                         android:layout_marginTop="15dp"
+                        android:id="@+id/nim"
                         android:textAppearance="@style/text_regular_plain"
                         android:text="E41212178" />
 
@@ -101,6 +102,7 @@
                         android:textAppearance="@style/text_bold_plain"
                         android:layout_marginLeft="12dp"
                         android:layout_marginTop="15dp"
+                        android:id="@+id/name"
                         android:text="User Lorem Ipsum" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -109,6 +111,7 @@
                         android:layout_marginLeft="12dp"
                         android:textAppearance="@style/text_regular_plain"
                         android:layout_marginTop="15dp"
+                        android:id="@+id/fakultas"
                         android:text="Teknik Informatika" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -117,6 +120,7 @@
                         android:layout_marginLeft="12dp"
                         android:textAppearance="@style/text_regular_plain"
                         android:layout_marginTop="5dp"
+                        android:id="@+id/kampus"
                         android:text="Politeknik Negeri Jember - Kampus Bondowoso" />
 
                     <LinearLayout
