@@ -27,19 +27,6 @@ class HeadFragment : AppCompatActivity()  {
                 }
             }
         })
-//        binding.navigation.setOnItemSelectedListener {
-//            when (it.itemId) {
-//                R.id.bottom_home -> replaceFragment(Home())
-//                R.id.botom_chat -> replaceFragment(Chat())
-//                R.id.bottom_riwayat_judul -> replaceFragment(RiwayatJudul())
-//                R.id.bottom_profile -> replaceFragment(Profile())
-//                else -> {
-//                }
-//
-//            }
-//            true
-//
-//        }9
     }
 
     private fun replaceFragment(fragment: Fragment) {

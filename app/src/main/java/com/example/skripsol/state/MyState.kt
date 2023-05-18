@@ -1,11 +1,13 @@
 package com.example.skripsol.state
 
-class MyState {
-    private var userData: String = ""
+object MyState {
+    private var dataUser: Map<String, Any>? = null
 
-    var user: String
-        get() = userData
-        set(value) {
-            userData = value
-        }
+    fun setDataUser(data: Map<String, Any>) {
+        this.dataUser = data
+    }
+
+    fun getDataUser(): Map<String, Any>? {
+        return dataUser
+    }
 }

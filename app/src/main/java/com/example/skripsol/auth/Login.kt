@@ -53,10 +53,8 @@ class Login : AppCompatActivity() {
                                 .toString()
                         )
                         editor.apply()
-                        val state = MyState()
-                        state.user =
-                            dataResponse?.get("data")?.let { it as? Map<String, Any> }?.get("user")
-                                .toString()
+                        MyState.setDataUser(dataResponse?.get("data")?.let { it as? Map<String, Any> }?.get("user") as Map<String, Any>);
+
                     } else {
                         Toast.makeText(this@Login, "Fetch data error",
                             Toast.LENGTH_SHORT
