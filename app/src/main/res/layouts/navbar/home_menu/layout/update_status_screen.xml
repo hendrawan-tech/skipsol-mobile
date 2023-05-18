@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
     tools:context=".navbar.HomeMenu.UpdateStatus">
 
@@ -38,35 +38,167 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/appbar_update_status"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
-            android:layout_below="@+id/appbar_update_status"
             android:orientation="vertical">
-            <com.google.android.material.button.MaterialButtonToggleGroup
-                android:id="@+id/dropdown_toggle_group"
-                android:layout_width="wrap_content"
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_update_status"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:singleSelection="true">
+                android:layout_marginBottom="14dp"
+                android:text="Update Status"
+                android:textAlignment="textStart"
+                android:textAllCaps="false"
+                android:textAppearance="@style/text_bold_primary"
+                app:cornerRadius="12dp"
+                app:icon="@drawable/icon_arrow_up"
+                app:iconGravity="end"
+                app:strokeColor="@color/primary_color" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button_option_1"
-                    android:layout_width="wrap_content"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_view"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:translationY="0dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:strokeColor="@color/primary_color"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Option 1" />
+                    android:orientation="vertical">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button_option_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Option 2" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_belum_input_judul_ta"
+                        style="@style/CustomTextButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Belum Input Judul TA"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textAppearance="@style/text_regular_font_primary"
+                        android:textSize="14sp"
+                        app:checkedIcon="@drawable/icon_checked_update_status"
+                        app:iconGravity="end"
+                        app:iconTint="@color/primary_color"
+                        app:rippleColor="@color/secondary_variant" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button_option_3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Option 3" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_sudah_input_judul_ta"
+                        style="@style/CustomTextButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Sudah Input Judul TA"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textAppearance="@style/text_regular_font_primary"
+                        android:textSize="14sp"
+                        app:backgroundTint="@color/white_color"
+                        app:checkedIcon="@drawable/icon_checked_update_status"
+                        app:iconGravity="end"
+                        app:iconTint="@color/primary_color"
+                        app:rippleColor="@color/secondary_variant" />
 
-            </com.google.android.material.button.MaterialButtonToggleGroup>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_sudah_sempro"
+                        style="@style/CustomTextButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Sudah Sempro"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textAppearance="@style/text_regular_font_primary"
+                        android:textSize="14sp"
+                        app:backgroundTint="@color/white_color"
+                        app:checkedIcon="@drawable/icon_checked_update_status"
+                        app:iconGravity="end"
+                        app:iconTint="@color/primary_color"
+                        app:rippleColor="@color/secondary_variant" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_sudah_melakukan_sidang"
+                        style="@style/CustomTextButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sudah Melakukan Sidang"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textAppearance="@style/text_regular_font_primary"
+                        android:textSize="14sp"
+                        app:backgroundTint="@color/white_color"
+                        app:checkedIcon="@drawable/icon_checked_update_status"
+                        app:iconGravity="end"
+                        app:iconTint="@color/primary_color"
+                        app:rippleColor="@color/secondary_variant" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_lulus_dengan_revisi"
+                        style="@style/CustomTextButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Lulus dengan revisi"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textAppearance="@style/text_regular_font_primary"
+                        android:textSize="14sp"
+                        app:backgroundTint="@color/white_color"
+                        app:checkedIcon="@drawable/icon_checked_update_status"
+                        app:iconGravity="end"
+                        app:iconTint="@color/primary_color"
+                        app:rippleColor="@color/secondary_variant" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_belum_lulus"
+                        style="@style/CustomTextButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Belum Lulus"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textAppearance="@style/text_regular_font_primary"
+                        android:textSize="14sp"
+                        app:backgroundTint="@color/white_color"
+                        app:checkedIcon="@drawable/icon_checked_update_status"
+                        app:iconGravity="end"
+                        app:iconTint="@color/primary_color"
+                        app:rippleColor="@color/secondary_variant" />
+
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_kirim_status"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="35dp"
+                android:backgroundTint="@color/primary_color"
+                android:text="KIRIM"
+                android:textAppearance="@style/text_bold_plain"
+                android:textColor="@color/white_color"
+                app:cornerRadius="12dp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/text_bold_font_primary"
+                android:text="Riwayat Status"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/riwayat_status_recycle_view"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
         </LinearLayout>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
