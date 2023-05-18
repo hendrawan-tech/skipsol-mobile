@@ -41,6 +41,8 @@ class ChatAdapter(private val itemList: List<Map<String, Any>>) :
                     itemView.context.startActivity(intent)
                 }
             }
+
+
         }
     }
 }

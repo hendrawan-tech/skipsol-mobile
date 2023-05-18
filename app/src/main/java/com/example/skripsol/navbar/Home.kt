@@ -42,7 +42,8 @@ class Home : Fragment() {
             valFakultas = "${tmpFakultas[0]} ${tmpFakultas[1]}"
             valKampus = tmpFakultas[2]
         } else {
-            user?.get("program_studi")?.let { it as? Map<*, *> }?.get("name").toString()
+            valFakultas = user?.get("program_studi")?.let { it as? Map<*, *> }?.get("name").toString()
+
         }
 
         username.text = user?.get("name").toString()
