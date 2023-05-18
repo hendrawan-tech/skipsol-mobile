@@ -1,6 +1,5 @@
 package com.example.skripsol.config
 
-import com.example.skripsol.model.LoginModel
 import retrofit2.Call
 import retrofit2.http.*
 
