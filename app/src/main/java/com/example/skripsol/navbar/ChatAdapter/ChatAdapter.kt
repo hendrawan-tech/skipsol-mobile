@@ -35,12 +35,14 @@ class ChatAdapter(private val itemList: List<Map<String, Any>>) :
                 titleTextView.text = res["name"].toString()
                 subtitleTextView.text = res["phone_number"].toString() ?: "-"
 
+
                 itemView.setOnClickListener {
                     val intent = Intent(Intent.ACTION_VIEW)
                     intent.data = Uri.parse("https://api.whatsapp.com/send?phone=${subtitleTextView.text}")
                     itemView.context.startActivity(intent)
                 }
             }
+
 
         }
     }

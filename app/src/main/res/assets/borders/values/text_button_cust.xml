@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
+        <!-- Define custom button style -->
+        <item name="materialButtonStyle">@style/CustomTextButtonStyle</item>
+    </style>
+
+    <style name="CustomTextButtonStyle" parent="Widget.MaterialComponents.Button.TextButton">
+        <!-- Customize button text color -->
+        <item name="android:textColor">@color/font_primary_color</item>
+        <!-- Customize button background color -->
+        <item name="backgroundTint">@color/white_color</item>
+        <!-- Customize button text size -->
+        <item name="android:textSize">16sp</item>
+        <!-- Customize button font family -->
+        <item name="android:fontFamily">@font/golos_text_regular</item>
+    </style>
+</resources>

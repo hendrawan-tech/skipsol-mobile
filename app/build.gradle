@@ -39,9 +39,12 @@ android {
                 'src/main/res',
                 'src/main/res/layouts/auth',
                 'src/main/res/layouts/navbar',
+                'src/main/res/layouts/navbar/home_menu',
                 'src/main/res/layouts/profile',
                 'src/main/res/assets/icons',
-                'src/main/res/assets/images'
+                'src/main/res/assets/images',
+                'src/main/res/assets/background',
+                'src/main/res/assets/borders'
             ]
         }
     }

@@ -26,10 +26,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".navbar.Home"
-            android:exported="true"/>
-        <activity android:name=".navbar.Chat"
-            android:exported="true"/>
+
         <activity android:name=".navbar.HomeMenu.InputJudulTA"
             android:exported="true"/>
         <activity android:name=".auth.Login" />
