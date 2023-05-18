@@ -30,8 +30,7 @@ class Profile : Fragment() {
             view.findViewById(R.id.EditText_profile_no_hp)
         val EditText_profile_status_skripsi: TextInputEditText =
             view.findViewById(R.id.EditText_profile_status_skripsi)
-        val EditText_profile_dosen_wali: TextInputEditText =
-            view.findViewById(R.id.EditText_profile_dosen_wali)
+
         val EditText_profile_dosen_pembimbing: TextInputEditText =
             view.findViewById(R.id.EditText_profile_dosen_pembimbing)
         val EditText_profile_dosen_penguji: TextInputEditText =
@@ -41,7 +40,7 @@ class Profile : Fragment() {
         profile_user_email.text = user?.get("email").toString()
         EditText_profile_nama_lengkap.setText(user?.get("name").toString())
         EditText_profile_nim.setText(user?.get("nim").toString())
-        EditText_profile_dosen_wali.setText(user?.get("dosen")?.let { it as? Map<*, *> }?.get("name").toString())
+
 
         return view
     }
