@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    Text Plain Color-->
+    <style name="text_regular_plain">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="fontFamily">@font/golos_text_regular</item>
+    </style>
+
+    <style name="text_medium_plain">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="fontFamily">@font/golos_text_medium</item>
+    </style>
+
+    <style name="text_bold_plain">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="fontFamily">@font/golos_text_medium</item>
+    </style>
+
+    <style name="text_semi_bold_plain">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="fontFamily">@font/golos_text_medium</item>
+    </style>
+
+    <style name="text_extra_bold_plain">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="fontFamily">@font/golos_text_medium</item>
+    </style>
+
+
+<!--    Text Primary Color-->
+    <style name="text_regular_primary">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/primary_color</item>
+        <item name="fontFamily">@font/golos_text_regular</item>
+    </style>
+
+    <style name="text_medium_primary">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/primary_color</item>
+        <item name="fontFamily">@font/golos_text_medium</item>
+    </style>
+
+    <style name="text_bold_primary">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/primary_color</item>
+        <item name="fontFamily">@font/golos_text_medium</item>
+    </style>
+
+    <style name="text_semi_bold_primary">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/primary_color</item>
+        <item name="fontFamily">@font/golos_text_medium</item>
+    </style>
+
+    <style name="text_extra_bold_primary">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/primary_color</item>
+        <item name="fontFamily">@font/golos_text_medium</item>
+    </style>
+
+
+<!--    Text Font Primary Color-->
+    <style name="text_regular_font_primary">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/font_primary_color</item>
+        <item name="fontFamily">@font/golos_text_regular</item>
+    </style>
+
+    <style name="text_medium_font_primary">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/font_primary_color</item>
+        <item name="fontFamily">@font/golos_text_medium</item>
+    </style>
+
+    <style name="text_bold_font_primary">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/font_primary_color</item>
+        <item name="fontFamily">@font/golos_text_bold</item>
+    </style>
+
+    <style name="text_semi_bold_font_primary">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/font_primary_color</item>
+        <item name="fontFamily">@font/golos_text_semi_bold</item>
+    </style>
+
+    <style name="text_extra_bold_font_primary">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/font_primary_color</item>
+        <item name="fontFamily">@font/golos_text_extra_bold</item>
+    </style>
+
+<!--    Text Font Secondary Color-->
+    <style name="text_regular_secondary">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/font_secondary_color</item>
+        <item name="fontFamily">@font/golos_text_regular</item>
+    </style>
+
+    <style name="text_medium_secondary">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/font_secondary_color</item>
+        <item name="fontFamily">@font/golos_text_medium</item>
+    </style>
+
+    <style name="text_bold_secondary">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/font_secondary_color</item>
+        <item name="fontFamily">@font/golos_text_bold</item>
+    </style>
+
+    <style name="text_semi_bold_secondary">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/font_secondary_color</item>
+        <item name="fontFamily">@font/golos_text_semi_bold</item>
+    </style>
+
+    <style name="text_extra_bold_secondary">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/font_secondary_color</item>
+        <item name="fontFamily">@font/golos_text_extra_bold</item>
+    </style>
+
+<!--    Text Font Secondary Variant-->
+    <style name="text_regular_secondary_variant">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/secondary_variant</item>
+        <item name="fontFamily">@font/golos_text_regular</item>
+    </style>
+
+    <style name="text_medium_secondary_variant">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/secondary_variant</item>
+        <item name="fontFamily">@font/golos_text_medium</item>
+    </style>
+
+    <style name="text_bold_secondary_variant">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/secondary_variant</item>
+        <item name="fontFamily">@font/golos_text_bold</item>
+    </style>
+
+    <style name="text_semi_bold_secondary_variant">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/secondary_variant</item>
+        <item name="fontFamily">@font/golos_text_semi_bold</item>
+    </style>
+
+    <style name="text_extra_bold_secondary_variant">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/secondary_variant</item>
+        <item name="fontFamily">@font/golos_text_extra_bold</item>
+    </style>
+
+    <style name="TextInputLayoutCircular">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.TextInputLayout.Circle</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.TextInputLayout.Circle" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+        <item name="boxStrokeColor">@color/primary_color</item>
+    </style>
+
+
+
+
+</resources>

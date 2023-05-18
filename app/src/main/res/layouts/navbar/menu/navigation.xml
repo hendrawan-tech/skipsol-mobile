@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Home"
+        android:icon="@drawable/icons_navbar_home"
+        android:id="@+id/bottom_home"/>
+    <item android:title="Chat"
+        android:icon="@drawable/icons_navbar_chat"
+        android:id="@+id/botom_chat"/>
+    <item android:title="Riwayat Judul"
+        android:icon="@drawable/icons_navbar_history"
+        android:id="@+id/bottom_riwayat_judul"/>
+    <item android:title="Profile"
+        android:icon="@drawable/icons_navbar_profile"
+        android:id="@+id/bottom_profile"/>
+
+</menu>
