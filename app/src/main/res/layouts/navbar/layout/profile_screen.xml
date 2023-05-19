@@ -243,35 +243,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="Dosen Wali"
-                    android:textAppearance="@style/text_semi_bold_font_primary" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/InputLayout_profile_dosen_wali"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:background="@drawable/text_field_round_border"
-                    app:boxBackgroundMode="none"
-                    app:hintEnabled="false">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/EditText_profile_dosen_wali"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/golos_text_regular"
-                        android:maxLines="1"
-                        android:padding="15dp"
-                        android:textColor="@color/font_primary_color"
-                        android:textColorHint="@color/font_secondary_variant"
-                        android:textSize="12sp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
                     android:text="Dosen Pembimbing"
                     android:textAppearance="@style/text_semi_bold_font_primary" />
 
@@ -329,26 +300,25 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/button_profile_logout"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:text="GANTI PASSWORD"
                     android:textAppearance="@style/text_bold_primary"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     app:cornerRadius="12dp"
-                    app:strokeColor="@color/primary_color"/>
+                    app:strokeColor="@color/primary_color" />
 
                 <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.MaterialComponents.Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cornerRadius="12dp"
                     android:layout_marginBottom="35dp"
-                    android:text="LOG OUT"
-                    style="@style/Widget.MaterialComponents.Button"
                     android:backgroundTint="@color/primary_color"
+                    android:text="LOG OUT"
                     android:textAppearance="@style/text_bold_plain"
                     android:textColor="@color/white_color"
-                    />
+                    app:cornerRadius="12dp" />
             </LinearLayout>
         </RelativeLayout>
 
