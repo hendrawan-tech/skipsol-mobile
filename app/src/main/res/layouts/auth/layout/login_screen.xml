@@ -27,13 +27,13 @@
                 android:src="@drawable/img_login" />
 
             <com.google.android.material.card.MaterialCardView
-
+                android:id="@+id/login_material_card_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/img_login"
                 android:layout_marginTop="2dp"
                 app:cardBackgroundColor="@color/white_color"
-                app:cardCornerRadius="32dp">
+                >
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -109,8 +109,8 @@
                         android:layout_marginBottom="20dp"
                         android:background="@drawable/text_field_login_rounded"
                         app:boxBackgroundMode="none"
-                        app:endIconDrawable="@drawable/icon_toggle_password_false"
-                        app:endIconMode="custom"
+                        app:endIconDrawable="@drawable/icons_password_toggle"
+                        app:endIconMode="password_toggle"
                         app:hintEnabled="false"
                         app:passwordToggleEnabled="true">
 
@@ -144,6 +144,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="46dp"
+                        android:layout_marginBottom="37dp"
                         android:backgroundTint="@color/primary_color"
                         android:text="LOGIN"
                         android:textAppearance="@style/text_bold_plain"
@@ -160,8 +161,6 @@
 
 
     </ScrollView>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
