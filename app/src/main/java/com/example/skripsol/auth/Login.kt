@@ -21,9 +21,9 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_screen)
         supportActionBar?.hide()
-        val button: AppCompatButton = findViewById(R.id.btnLogin)
-        val email: EditText = findViewById(R.id.emailController)
-        val password: EditText = findViewById(R.id.passwordController)
+        val button: AppCompatButton = findViewById(R.id.btn_login)
+        val email: EditText = findViewById(R.id.EditText_login_nim)
+        val password: EditText = findViewById(R.id.EditText_login_password)
 
         button.setOnClickListener {
             login(email.text.toString(), password.text.toString())
@@ -32,7 +32,7 @@ class Login : AppCompatActivity() {
 
     private fun login(email: String, password: String) {
         val sharedPreference = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-        val button: AppCompatButton = findViewById(R.id.btnLogin)
+        val button: AppCompatButton = findViewById(R.id.btn_login)
         button.text = "Loading . . ."
         button.isEnabled = false
         Network.instance.login(email, password)

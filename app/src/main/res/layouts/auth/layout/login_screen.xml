@@ -7,156 +7,161 @@
     android:background="@color/primary_color"
     tools:context=".MainActivity">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent">
 
-        <ImageView
 
-            android:id="@+id/img_login"
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
             android:layout_width="match_parent"
-            android:layout_height="194.44dp"
-            android:src="@drawable/img_login" />
+            android:layout_height="wrap_content">
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/img_login"
-            android:layout_marginTop="2dp"
-            android:background="@color/white_color"
-            app:cardBackgroundColor="@color/white_color"
-            app:cardCornerRadius="32dp">
-
-            <LinearLayout
+            <ImageView
+                android:id="@+id/img_login"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="12dp"
-                android:orientation="vertical">
+                android:layout_height="194.44dp"
+                android:src="@drawable/img_login" />
 
-                <ImageView
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/img_login_logo" />
+            <com.google.android.material.card.MaterialCardView
 
-                <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/img_login"
+                android:layout_marginTop="2dp"
+                app:cardBackgroundColor="@color/white_color"
+                app:cardCornerRadius="32dp">
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Login"
-                    android:textAppearance="@style/text_bold_primary"
-                    android:textSize="24sp" />
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:orientation="vertical">
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Lakukan login untuk melanjutkan ke aplikasi"
-                    android:textAppearance="@style/text_regular_secondary"
-                    android:textSize="12sp" />
+                    <ImageView
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/img_login_logo" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="NIM"
-                    android:textAppearance="@style/text_regular_font_primary" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/InputLayout_login_nim"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="20dp"
-                    android:background="@drawable/text_field_login_rounded"
-                    app:boxBackgroundMode="none">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/EditText_login_nim"
+                    <com.google.android.material.textview.MaterialTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/golos_text_regular"
-                        android:hint="E4xxxxxxx"
-                        android:maxLines="1"
-                        android:padding="15dp"
-                        android:textColor="@color/font_primary_color"
-                        android:textColorHint="@color/font_secondary_variant"
-                        android:textSize="12sp" />
+                        android:text="Login"
+                        android:textAppearance="@style/text_bold_primary"
+                        android:textSize="24sp" />
 
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="Password"
-                    android:textAppearance="@style/text_regular_font_primary" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/InputLayout_login_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="20dp"
-                    android:background="@drawable/text_field_login_rounded"
-                    app:boxBackgroundMode="none"
-                    app:endIconDrawable="@drawable/icon_toggle_password_false"
-                    app:endIconMode="custom"
-                    app:hintEnabled="false"
-                    app:passwordToggleEnabled="true">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/EditText_login_password"
+                    <com.google.android.material.textview.MaterialTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/golos_text_regular"
-                        android:hint="xxxxxxxxxxx"
-                        android:inputType="textPassword"
-                        android:maxLines="1"
-                        android:padding="15dp"
-                        android:textColor="@color/font_primary_color"
-                        android:textColorHint="@color/font_secondary_variant"
+                        android:layout_marginTop="10dp"
+                        android:text="Lakukan login untuk melanjutkan ke aplikasi"
+                        android:textAppearance="@style/text_regular_secondary"
                         android:textSize="12sp" />
 
-                </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="NIM"
+                        android:textAppearance="@style/text_regular_font_primary" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/btn_lupa_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:gravity="center"
-                    android:text="Lupa password?"
-                    android:textAppearance="@style/text_semi_bold_primary" />
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/InputLayout_login_nim"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/text_field_login_rounded"
+                        app:boxBackgroundMode="none"
+                        app:hintEnabled="false">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_login"
-                    style="@style/Widget.MaterialComponents.Button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="46dp"
-                    android:backgroundTint="@color/primary_color"
-                    android:text="LOGIN"
-                    android:textAppearance="@style/text_bold_plain"
-                    android:textColor="@color/white_color"
-                    app:cornerRadius="12dp" />
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/EditText_login_nim"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/golos_text_regular"
+                            android:hint="E4xxxxxxx"
+                            android:maxLines="1"
+                            android:padding="15dp"
+                            android:textColor="@color/font_primary_color"
+                            android:textColorHint="@color/font_secondary_variant"
+                            android:textSize="12sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="Password"
+                        android:textAppearance="@style/text_regular_font_primary" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/InputLayout_login_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/text_field_login_rounded"
+                        app:boxBackgroundMode="none"
+                        app:endIconDrawable="@drawable/icon_toggle_password_false"
+                        app:endIconMode="custom"
+                        app:hintEnabled="false"
+                        app:passwordToggleEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/EditText_login_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/golos_text_regular"
+                            android:hint="xxxxxxxxxxx"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:padding="15dp"
+                            android:textColor="@color/font_primary_color"
+                            android:textColorHint="@color/font_secondary_variant"
+                            android:textSize="12sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/btn_lupa_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center"
+                        android:text="Lupa password?"
+                        android:textAppearance="@style/text_semi_bold_primary" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_login"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="46dp"
+                        android:backgroundTint="@color/primary_color"
+                        android:text="LOGIN"
+                        android:textAppearance="@style/text_bold_plain"
+                        android:textColor="@color/white_color"
+                        app:cornerRadius="12dp" />
 
 
-            </LinearLayout>
+                </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+            </com.google.android.material.card.MaterialCardView>
 
 
-    </RelativeLayout>
+        </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/relativeLayout" />
+
+    </ScrollView>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
