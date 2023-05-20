@@ -7,10 +7,12 @@ import android.graphics.Color
 import android.os.Bundle
 
 import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.skripsol.FunctionHelper.Get
 import com.example.skripsol.R
 
 
@@ -48,6 +50,10 @@ class UpdateStatus : AppCompatActivity() {
 
         UpdateStatusRecycleView.layoutManager = LinearLayoutManager(this)
         UpdateStatusRecycleView.adapter = updateStatusAdapter
+
+        findViewById<ImageView>(R.id.btn_back_update_status).setOnClickListener {
+            Get.back(this)
+        }
 
 
         ButtonUpdateStatus.setOnClickListener {
