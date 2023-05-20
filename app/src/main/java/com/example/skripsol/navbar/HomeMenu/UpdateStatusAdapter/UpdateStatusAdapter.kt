@@ -19,9 +19,9 @@ class UpdateStatusAdapter(private val itemList: List<UpdateStatusData>) : Recycl
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = itemList[position]
-        holder.UpdateStatusImage.setImageResource(item.UpdateStatusImage)
-        holder.UpdateStatusTitle.text= item.UpdadateStatusTitle
-        holder.UpdateStatusDate.text = item.UpdateStatusDate
+//        holder.UpdateStatusImage.setImageResource(item.UpdateStatusImage)
+//        holder.UpdateStatusTitle.text= item.UpdadateStatusTitle
+//        holder.UpdateStatusDate.text = item.UpdateStatusDate
 //        if (item.UpdateStatusVerified){
 //            holder.UpdateStatusVerified.visibility = View.VISIBLE
 //        }else{
@@ -37,9 +37,9 @@ class UpdateStatusAdapter(private val itemList: List<UpdateStatusData>) : Recycl
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val UpdateStatusImage: CircleImageView = itemView.findViewById(R.id.update_status_image)
-        val UpdateStatusTitle: TextView = itemView.findViewById(R.id.update_status_title)
-        val UpdateStatusDate: TextView = itemView.findViewById(R.id.update_status_date)
+//        val UpdateStatusImage: CircleImageView = itemView.findViewById(R.id.update_status_image)
+//        val UpdateStatusTitle: TextView = itemView.findViewById(R.id.update_status_title)
+//        val UpdateStatusDate: TextView = itemView.findViewById(R.id.update_status_date)
 //        val UpdateStatusVerified : LinearLayout = itemView.findViewById(R.id.update_status_verified)
     }
 }

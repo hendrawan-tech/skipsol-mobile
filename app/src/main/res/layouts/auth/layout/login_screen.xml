@@ -75,7 +75,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="10dp"
                         android:background="@drawable/text_field_login_rounded"
                         app:boxBackgroundMode="none"
                         app:hintEnabled="false">
@@ -93,6 +93,14 @@
                             android:textSize="12sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/error_nimNotif"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="NIM yang anda masukkan tidak valid/tidak terdaftar"
+                        android:fontFamily="@font/golos_text_regular"
+                        android:textSize="12sp"
+                        android:visibility="gone"/>
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="match_parent"
@@ -106,10 +114,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="20dp"
                         android:background="@drawable/text_field_login_rounded"
                         app:boxBackgroundMode="none"
                         app:endIconDrawable="@drawable/icons_password_toggle"
+                        app:errorContentDescription="@string/bottom_sheet_behavior"
                         app:endIconMode="password_toggle"
                         app:hintEnabled="false"
                         app:passwordToggleEnabled="true">
@@ -128,6 +136,16 @@
                             android:textSize="12sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/error_passwordNotif"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/golos_text_regular"
+                        android:visibility="gone"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Password Salah" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/btn_lupa_password"

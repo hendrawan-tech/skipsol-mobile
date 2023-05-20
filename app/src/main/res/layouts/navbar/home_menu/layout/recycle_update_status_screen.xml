@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -13,33 +12,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/update_status_card_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="13dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="12dp"
-            app:cardBackgroundColor="@color/secondary_variant"
-            app:cardCornerRadius="12dp"
-            app:strokeColor="@color/border_color"
-            app:strokeWidth="1dp">
+            android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="@color/secondary_variant">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                ♦<de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/update_status_image"
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="63dp"
                     android:layout_height="63dp"
                     android:layout_marginLeft="12dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="17dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
                     android:src="@drawable/img_model_profile" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:id="@+id/Innerlinear"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
                     android:layout_marginTop="20dp"
@@ -47,55 +45,117 @@
                     android:orientation="vertical">
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/update_status_title"
+                        android:id="@+id/UpdateStatus_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:text="Sudah Melakukan Sidang"
+                        android:text="Sudah melakukan sidang"
                         android:textAppearance="@style/text_bold_font_primary"
-                        android:textSize="14sp" />
+                        />
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/update_status_date"
+                        android:id="@+id/UpdateStatus_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="31 Juli 2023"
-                        android:textAppearance="@style/text_regular_secondary"
+                        android:text="17 Agustus 2023"
+                        android:textAppearance="@style/text_regular_font_primary"
                         android:textSize="12sp" />
-
                 </LinearLayout>
-<!--                <LinearLayout-->
-<!--                    android:visibility="visible"-->
-<!--                    android:id="@+id/update_status_verified"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:orientation="horizontal"-->
-<!--                    android:gravity="end|center">-->
-<!--                    <com.google.android.material.textview.MaterialTextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Verified"-->
-<!--                        android:textAppearance="@style/text_bold_primary"-->
-<!--                        android:layout_marginLeft="250dp"-->
-<!--                        android:layout_marginRight="5dp"-->
-<!--                        android:textSize="12sp"/>-->
-<!--                    <ImageView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginRight="16dp"-->
-<!--                        android:src="@drawable/icon_checked_update_status"/>-->
 
-<!--                </LinearLayout>-->
 
-<!--                <FrameLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layoutDirection=""-->
-<!--                    ></FrameLayout>-->
             </LinearLayout>
+            <ImageView
+                android:layout_marginTop="45dp"
+                android:layout_marginLeft="250dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_verified_update_status"/>
 
 
         </com.google.android.material.card.MaterialCardView>
+        <!--        <com.google.android.material.card.MaterialCardView-->
+        <!--            android:id="@+id/update_status_card_item"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginLeft="13dp"-->
+        <!--            android:layout_marginRight="12dp"-->
+        <!--            app:cardBackgroundColor="@color/secondary_variant"-->
+        <!--            app:cardCornerRadius="12dp"-->
+        <!--            app:strokeColor="@color/border_color"-->
+        <!--            app:strokeWidth="1dp">-->
+
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:orientation="horizontal">-->
+
+        <!--                ♦<de.hdodenhof.circleimageview.CircleImageView-->
+        <!--                    android:id="@+id/update_status_image"-->
+        <!--                    android:layout_width="63dp"-->
+        <!--                    android:layout_height="63dp"-->
+        <!--                    android:layout_marginLeft="12dp"-->
+        <!--                    android:layout_marginTop="16dp"-->
+        <!--                    android:layout_marginBottom="17dp"-->
+        <!--                    android:src="@drawable/img_model_profile" />-->
+
+        <!--                <LinearLayout-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginLeft="12dp"-->
+        <!--                    android:layout_marginTop="20dp"-->
+        <!--                    android:layout_marginBottom="19dp"-->
+        <!--                    android:orientation="vertical">-->
+
+        <!--                    <com.google.android.material.textview.MaterialTextView-->
+        <!--                        android:id="@+id/update_status_title"-->
+        <!--                        android:layout_width="wrap_content"-->
+        <!--                        android:layout_height="wrap_content"-->
+        <!--                        android:layout_marginBottom="5dp"-->
+        <!--                        android:text="Sudah Melakukan Sidang"-->
+        <!--                        android:textAppearance="@style/text_bold_font_primary"-->
+        <!--                        android:textSize="14sp" />-->
+
+        <!--                    <com.google.android.material.textview.MaterialTextView-->
+        <!--                        android:id="@+id/update_status_date"-->
+        <!--                        android:layout_width="wrap_content"-->
+        <!--                        android:layout_height="wrap_content"-->
+        <!--                        android:text="31 Juli 2023"-->
+        <!--                        android:textAppearance="@style/text_regular_secondary"-->
+        <!--                        android:textSize="12sp" />-->
+
+        <!--                </LinearLayout>-->
+        <!--                <LinearLayout-->
+        <!--                    android:visibility="visible"-->
+        <!--                    android:id="@+id/update_status_verified"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="match_parent"-->
+        <!--                    android:orientation="horizontal"-->
+        <!--                    android:gravity="end|center">-->
+        <!--                    <com.google.android.material.textview.MaterialTextView-->
+        <!--                        android:layout_width="match_parent"-->
+        <!--                        android:layout_height="wrap_content"-->
+        <!--                        android:text="Verified"-->
+        <!--                        android:textAppearance="@style/text_bold_primary"-->
+        <!--                        android:layout_marginLeft="250dp"-->
+        <!--                        android:layout_marginRight="5dp"-->
+        <!--                        android:textSize="12sp"/>-->
+        <!--                    <ImageView-->
+        <!--                        android:layout_width="match_parent"-->
+        <!--                        android:layout_height="wrap_content"-->
+        <!--                        android:layout_marginRight="16dp"-->
+        <!--                        android:src="@drawable/icon_checked_update_status"/>-->
+
+        <!--                </LinearLayout>-->
+
+        <!--                <FrameLayout-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layoutDirection=""-->
+        <!--                    ></FrameLayout>-->
+        <!--            </LinearLayout>-->
+
+
+        <!--        </com.google.android.material.card.MaterialCardView>-->
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

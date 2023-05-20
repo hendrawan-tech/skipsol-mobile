@@ -3,6 +3,7 @@ package com.example.skripsol.auth
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.graphics.Outline
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -18,11 +19,13 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doOnTextChanged
 import com.example.skripsol.R
 import com.example.skripsol.config.Network
 import com.example.skripsol.state.MyState
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.TextInputLayout
+import com.google.android.material.textview.MaterialTextView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -38,37 +41,59 @@ class Login : AppCompatActivity() {
         val button: AppCompatButton = findViewById(R.id.btn_login)
         val email: EditText = findViewById(R.id.EditText_login_nim)
         val password: EditText = findViewById(R.id.EditText_login_password)
-        val passwordTextInputLayout : TextInputLayout = findViewById(R.id.InputLayout_login_password)
+        val passwordTextInputLayout: TextInputLayout = findViewById(R.id.InputLayout_login_password)
 //        CardView
-        val card : MaterialCardView = findViewById(R.id.login_material_card_layout)
+        val card: MaterialCardView = findViewById(R.id.login_material_card_layout)
         val cornerRadius = 32F
 
-//      Untuk Set Icon Di End Gravity agar dapat berganti-ganti type
-        passwordTextInputLayout.setEndIconOnClickListener {
-            password.transformationMethod = if (password.transformationMethod == PasswordTransformationMethod.getInstance()) {
-                null // Password terlihat, ubah ke tipe input teks biasa
+        passwordTextInputLayout.setOnClickListener {
+            val isPasswordVisible =
+                password.inputType == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+
+            if (isPasswordVisible) {
+                // Password is currently visible, hide it
+                password.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                passwordTextInputLayout.setEndIconDrawable(R.drawable.icon_toggle_password_false)
             } else {
-                PasswordTransformationMethod.getInstance() // Password tersembunyi, ubah ke tipe input password tersembunyi
+                // Password is currently hidden, show it
+                password.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                passwordTextInputLayout.setEndIconDrawable(R.drawable.icon_toggle_password_true)
             }
-
-            passwordTextInputLayout.endIconDrawable = ContextCompat.getDrawable(this, if (password.transformationMethod == PasswordTransformationMethod.getInstance()) {
-                R.drawable.icon_toggle_password_false // Ikon mata terlihat (password tersembunyi)
-            } else {
-                R.drawable.icon_toggle_password_true // Ikon mata tersembunyi (password terlihat)
-            })
-
-            password.setSelection(password.text.length)
         }
 
 
+//     Untuk Set Icon Di End Gravity agar dapat berganti-ganti type
+//        passwordTextInputLayout.setEndIconOnClickListener {
+//            password.transformationMethod = if (password.transformationMethod == PasswordTransformationMethod.getInstance()) {
+//                null // Password terlihat, ubah ke tipe input teks biasa
+//            } else {
+//                PasswordTransformationMethod.getInstance() // Password tersembunyi, ubah ke tipe input password tersembunyi
+//            }
+//
+//            passwordTextInputLayout.endIconDrawable = ContextCompat.getDrawable(this, if (password.transformationMethod == PasswordTransformationMethod.getInstance()) {
+//                R.drawable.icon_toggle_password_false // Ikon mata terlihat (password tersembunyi)
+//            } else {
+//                R.drawable.icon_toggle_password_true // Ikon mata tersembunyi (password terlihat)
+//            })
+//
+//            password.setSelection(password.text.length)
+//        }
 
 
 //        Fungsi Untuk Rounded Card Di Top nya saja
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
-            card.outlineProvider = object : ViewOutlineProvider(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            card.outlineProvider = object : ViewOutlineProvider() {
                 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-                override fun getOutline(view: View?, outline: Outline?){
-                    outline?.setRoundRect(0,0,view!!.width,(view.height+cornerRadius).toInt(), cornerRadius)
+                override fun getOutline(view: View?, outline: Outline?) {
+                    outline?.setRoundRect(
+                        0,
+                        0,
+                        view!!.width,
+                        (view.height + cornerRadius).toInt(),
+                        cornerRadius
+                    )
                 }
             }
             card.clipToOutline = true
@@ -77,9 +102,8 @@ class Login : AppCompatActivity() {
 
 
 
-
         button.setOnClickListener {
-            login(email.text.toString(), password.text.toString())
+            login(email.text.toString().trim(), password.text.toString().trim())
         }
     }
 
@@ -106,12 +130,23 @@ class Login : AppCompatActivity() {
                                 .toString()
                         )
                         editor.apply()
-                        MyState.setDataUser(dataResponse?.get("data")?.let { it as? Map<String, Any> }?.get("user") as Map<String, Any>);
+                        MyState.setDataUser(
+                            dataResponse?.get("data")?.let { it as? Map<String, Any> }
+                                ?.get("user") as Map<String, Any>
+                        );
 
                     } else {
-                        Toast.makeText(this@Login, "Fetch data error",
+                        Toast.makeText(
+                            this@Login, "Fetch data error",
                             Toast.LENGTH_SHORT
                         ).show()
+                        val txtErrorPassword: MaterialTextView = findViewById(R.id.error_passwordNotif)
+                        val txtErrorNim : MaterialTextView = findViewById(R.id.error_nimNotif)
+                        txtErrorNim.setTextColor(Color.RED)
+                        txtErrorNim.visibility = View.VISIBLE
+                        txtErrorPassword.setTextColor(Color.RED)
+                        txtErrorPassword.visibility = View.VISIBLE
+
                     }
                 }
 

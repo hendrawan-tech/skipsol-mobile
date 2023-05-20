@@ -7,4 +7,6 @@
         <attr name="buttonCornerRadius" format="dimension" />
         <!-- Add other props here -->
     </declare-styleable>
+
+    <string name="bottom_sheet_behavior">Password is incorrect or no Users Found. Please try again.</string>
 </resources>

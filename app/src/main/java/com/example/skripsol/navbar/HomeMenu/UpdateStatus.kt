@@ -123,9 +123,6 @@ class UpdateStatus : AppCompatActivity() {
         activeButton = clickedButton
         ButtonUpdateStatus.text = clickedButton.text
         ButtonUpdateStatus.icon = ContextCompat.getDrawable(this, R.drawable.icon_arrow_up)
-//        Handler().postDelayed({
-//            cardView.visibility = View.GONE
-//        }, cardCloseDelay)
         if (cardView.visibility == View.VISIBLE) {
             val fadeOutAnimator = ObjectAnimator.ofFloat(cardView, "alpha", 1f, 0f)
             fadeOutAnimator.duration = 250

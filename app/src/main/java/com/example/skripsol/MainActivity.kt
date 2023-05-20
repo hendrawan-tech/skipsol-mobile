@@ -37,9 +37,11 @@ class MainActivity : AppCompatActivity() {
                         MyState.setDataUser(dataResponse?.get("data")?.let { it as? Map<*, *> }?.get("user") as Map<String, Any>);
                         val intent = Intent(this@MainActivity, HeadFragment::class.java)
                         startActivity(intent)
+                        finish()
                     } else {
                         val intent = Intent(this@MainActivity, Login::class.java)
                         startActivity(intent)
+                        finish()
                     }
                 }
 
@@ -50,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             val intent = Intent(this, Login::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }
