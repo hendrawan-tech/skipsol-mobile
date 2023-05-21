@@ -42,7 +42,7 @@ class UpdateStatus : AppCompatActivity() {
 
         val ButtonUpdateStatus = findViewById<MaterialButton>(R.id.button_update_status)
         val cardView = findViewById<MaterialCardView>(R.id.card_view)
-//        val backButon: ImageButton = findViewById(R.id.btn_back_update_status)
+
 
         UpdateStatusRecycleView = findViewById(R.id.riwayat_status_recycle_view)
         updateStatusAdapter = UpdateStatusAdapter(generateRandomData())
