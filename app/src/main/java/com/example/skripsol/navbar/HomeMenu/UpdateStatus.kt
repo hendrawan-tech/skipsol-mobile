@@ -5,7 +5,6 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.graphics.Color
 import android.os.Bundle
-
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -14,16 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skripsol.FunctionHelper.Get
 import com.example.skripsol.R
-
-
 import com.example.skripsol.navbar.HomeMenu.UpdateStatusAdapter.UpdateStatusAdapter
 import com.example.skripsol.navbar.HomeMenu.UpdateStatusAdapter.UpdateStatusData
-
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
-import java.time.LocalDate
-import java.time.temporal.ChronoUnit
-import kotlin.random.Random
+
 
 class UpdateStatus : AppCompatActivity() {
     private var activeButton: MaterialButton? = null
@@ -36,14 +30,19 @@ class UpdateStatus : AppCompatActivity() {
     private lateinit var button6: MaterialButton
 
     private lateinit var UpdateStatusRecycleView: RecyclerView
+
     private lateinit var updateStatusAdapter: UpdateStatusAdapter
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.update_status_screen)
 
+
         val ButtonUpdateStatus = findViewById<MaterialButton>(R.id.button_update_status)
         val cardView = findViewById<MaterialCardView>(R.id.card_view)
+//        val backButon: ImageButton = findViewById(R.id.btn_back_update_status)
 
         UpdateStatusRecycleView = findViewById(R.id.riwayat_status_recycle_view)
         updateStatusAdapter = UpdateStatusAdapter(generateRandomData())
@@ -51,9 +50,12 @@ class UpdateStatus : AppCompatActivity() {
         UpdateStatusRecycleView.layoutManager = LinearLayoutManager(this)
         UpdateStatusRecycleView.adapter = updateStatusAdapter
 
-        findViewById<ImageView>(R.id.btn_back_update_status).setOnClickListener {
+
+      findViewById<ImageView>(R.id.btn_back_update_status).setOnClickListener {
+
             Get.back(this)
         }
+
 
 
         ButtonUpdateStatus.setOnClickListener {
@@ -165,28 +167,34 @@ class UpdateStatus : AppCompatActivity() {
 
     }
 
-    //    private fun getDataUpdateStatus(): List<UpdateStatusData> {
-//        val updateStatusList = mutableListOf<UpdateStatusData>()
-//
-//    }
-    fun generateRandomData(): List<UpdateStatusData> {
 
-        val status = arrayOf("Sudah Input Judul TA", "Lulus Skripsi", "Tidak Lulus Skripsi")
-        val randomTanggal= arrayOf("29 - 9 - 2002", "26 - 8 - 2007", "17 - 9 - 20019")
-        val randomStatus = arrayOf(false, true, false, true).apply { shuffle() }
+   private  fun generateRandomData(): List<UpdateStatusData> {
+
+
         val randomData = mutableListOf<UpdateStatusData>()
 
-        repeat(4) {
-            val randomStatusIndex = Random.nextInt(status.size)
+        repeat(10) {
+            val updateStatus = arrayOf(
+                "Belum input judul TA",
+                "Sudah input judul TA",
+                "Sudah Sempro",
+                "Sudah melakukan sidang",
+                "Lulus dengan revisi",
+                "Belum Lulus"
+            ).random()
+            val verify = arrayOf(true, false).random()
+            val hari = (1..31).random()
+            val bulan = (1..12).random()
+            val tahun = (2018..2023).random()
+            val tanggal = "$hari- $bulan - $tahun"
 
 
             randomData.add(
                 UpdateStatusData(
                     R.drawable.img_model_profile,
-                    status[randomStatusIndex],
-                    randomTanggal.toString(),
-                    randomStatus[0]
-
+                    updateStatus,
+                    tanggal,
+                    verify
                 )
             )
         }
