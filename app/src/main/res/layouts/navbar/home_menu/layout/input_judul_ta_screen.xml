@@ -75,7 +75,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/EditText_input_judul_ta"
                         android:layout_width="match_parent"
-                        android:layout_height="58dp"
+                        android:layout_height="wrap_content"
                         android:fontFamily="@font/golos_text_regular"
                         android:hint=" "
                         android:maxLines="1"

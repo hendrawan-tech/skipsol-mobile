@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Skripsol"
+
         tools:targetApi="31">
         <activity
             android:screenOrientation="portrait"
@@ -26,19 +27,28 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+
         </activity>
 
         <activity android:name=".navbar.HomeMenu.InputJudulTA"
+            android:screenOrientation="portrait"
             android:exported="true"/>
-        <activity android:name=".auth.Login" />
+        <activity android:name=".auth.Login"
+            android:screenOrientation="portrait"/>
         <activity android:name=".navbar.HomeMenu.Monitoring"
+            android:screenOrientation="portrait"
             android:exported="true"/>
         <activity android:name=".navbar.HomeMenu.FormPengajuan"
+            android:screenOrientation="portrait"
             android:exported="true"/>
         <activity android:name=".navbar.HomeMenu.UpdateStatus"
+            android:screenOrientation="portrait"
             android:exported="true"/>
         <activity android:name=".navbar.HeadFragment"
+            android:screenOrientation="portrait"
             android:exported="false"/>
+        <activity android:name=".navbar.HomeMenu.Broadcast"
+            android:exported="true"/>
     </application>
 
 </manifest>

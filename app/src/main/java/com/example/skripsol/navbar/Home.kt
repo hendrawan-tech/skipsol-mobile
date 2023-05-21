@@ -1,18 +1,18 @@
 package com.example.skripsol.navbar
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.cardview.widget.CardView
 import com.example.skripsol.R
-import com.example.skripsol.navbar.HomeMenu.FormPengajuan
-import com.example.skripsol.navbar.HomeMenu.InputJudulTA
-import com.example.skripsol.navbar.HomeMenu.Monitoring
-import com.example.skripsol.navbar.HomeMenu.UpdateStatus
+import com.example.skripsol.navbar.HomeMenu.*
 import com.example.skripsol.state.MyState
 import com.google.android.material.textview.MaterialTextView
 
@@ -71,8 +71,16 @@ class Home : Fragment() {
         view.findViewById<CardView>(R.id.btn_update_status).setOnClickListener {
             val intent = Intent(context, UpdateStatus::class.java)
             startActivity(intent)
+        }
 
+        view.findViewById<ImageView>(R.id.btn_notifikasi).setOnClickListener {
+            val intent = Intent(context, Broadcast::class.java)
+            startActivity(intent)
+        }
 
+        view.findViewById<TextView>(R.id.btn_lihat_semua_notifikasi).setOnClickListener {
+            val intent = Intent(context, Broadcast::class.java)
+            startActivity(intent)
         }
 
         return view

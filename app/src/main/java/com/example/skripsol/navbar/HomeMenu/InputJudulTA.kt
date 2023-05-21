@@ -27,6 +27,7 @@ class InputJudulTA : AppCompatActivity() {
         val inputLayoutAbstrakTA: TextInputLayout = findViewById(R.id.InputLayout_abstrak_ta)
         val editTextAbstrakTA: EditText = findViewById(R.id.EditText_abstrak_ta)
 
+
         setupDropDownPilihDosenPembimbing()
 
 
@@ -67,6 +68,7 @@ class InputJudulTA : AppCompatActivity() {
             "Hermawan",
             "I Gede Wiryawan"
         )
+
         autoCompleteTextView.setDropDownBackgroundDrawable(
             ResourcesCompat.getDrawable(
                 resources,
@@ -80,7 +82,8 @@ class InputJudulTA : AppCompatActivity() {
         autoCompleteTextView.onItemClickListener =
             AdapterView.OnItemClickListener { adapterView, view, position, id ->
                 val itemSelected = adapterView.getItemAtPosition(position)
-                Toast.makeText(this, "Item $itemSelected", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "$itemSelected", Toast.LENGTH_SHORT).show()
+
             }
     }
 
@@ -93,6 +96,8 @@ class InputJudulTA : AppCompatActivity() {
         setupDropDownPilihDosenPembimbing(pilihDosenPembimbing2)
         setupDropDownPilihDosenPembimbing(pilihDosenPembimbing3)
     }
+
+
 
 
 

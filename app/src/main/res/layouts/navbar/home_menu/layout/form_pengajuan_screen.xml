@@ -79,6 +79,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textview.MaterialTextView
+                android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -91,6 +92,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/text_field_round_border"
                 app:boxBackgroundMode="none"
+                android:layout_marginBottom="15dp"
                 app:hintEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -122,14 +124,30 @@
                 app:boxBackgroundMode="none"
                 app:hintEnabled="false">
 
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/EditText_alasan_perubahan_judul"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:fontFamily="@font/golos_text_regular"-->
+<!--                    android:hint=" "-->
+<!--                    android:maxLines="1"-->
+<!--                    android:padding="15dp"-->
+<!--                    android:textColor="@color/font_primary_color"-->
+<!--                    android:textColorHint="@color/font_secondary_variant"-->
+<!--                    android:textSize="12sp" />-->
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/EditText_alasan_perubahan_judul"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="118dp"
                     android:fontFamily="@font/golos_text_regular"
+                    android:gravity="top"
                     android:hint=" "
-                    android:maxLines="1"
+                    android:inputType="textMultiLine"
+                    android:overScrollMode="always"
                     android:padding="15dp"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
                     android:textColor="@color/font_primary_color"
                     android:textColorHint="@color/font_secondary_variant"
                     android:textSize="12sp" />
