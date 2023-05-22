@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -41,6 +40,156 @@
                 android:textSize="16sp" />
 
         </com.google.android.material.appbar.MaterialToolbar>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/appbar_monitoring">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:id="@+id/layout_monitoring"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:orientation="vertical">
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Progress"
+                        android:textAppearance="@style/text_bold_font_primary"
+                        android:textSize="16sp" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/monitoring_progress_slider_to_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="37%"
+                        android:textAppearance="@style/text_regular_font_primary" />
+
+
+                </LinearLayout>
+
+<!--                <SeekBar-->
+<!--                    android:id="@+id/seekBar"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="20dp"-->
+<!--                    android:max="100"-->
+<!--                    android:progress="37" />-->
+<!--                <SeekBar-->
+<!--                    android:id="@+id/seekBar"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:progressDrawable="@drawable/seek_bar"-->
+<!--                    android:thumb="@drawable/seek_thumb"-->
+<!--                    android:layout_marginBottom="20dp"-->
+<!--                    android:progressTint="@color/primary_color"-->
+<!--                    android:progress="40" />-->
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/monitoring_progress_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:trackHeight="10dp"
+                    android:valueFrom="0"
+                    android:valueTo="100.0"
+                    app:labelBehavior="gone"
+                    app:thumbColor="@color/transparent_thumb"
+                    app:trackColorInactive="@color/slide_inactive_color" />
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:text="Deskripsi"
+                        android:textAppearance="@style/text_bold_font_primary"
+                        android:textSize="16sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/InputLayout_deskripsi_monitoring"
+                        android:layout_width="match_parent"
+                        android:layout_height="129dp"
+                        android:background="@drawable/text_field_round_border"
+                        app:boxBackgroundMode="none"
+                        app:hintEnabled="false">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/EditText_deskripsi_monitoring"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/icon_edit_monitoring"
+                            android:fontFamily="@font/golos_text_regular"
+                            android:hint="Tulis deskripsi ...."
+                            android:inputType="textMultiLine"
+                            android:overScrollMode="always"
+                            android:padding="15dp"
+                            android:scrollbarStyle="insideInset"
+                            android:scrollbars="vertical"
+                            android:textColor="@color/font_primary_color"
+                            android:textColorHint="@color/font_secondary_variant"
+                            android:textSize="12sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_kirim_monitoring"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="20dp"
+                        android:backgroundTint="@color/primary_color"
+                        android:padding="15dp"
+                        android:text="LOG OUT"
+                        android:textAppearance="@style/text_bold_plain"
+                        android:textColor="@color/white_color"
+                        app:cornerRadius="12dp" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:text="Riwayat Monitoring"
+                        android:textAppearance="@style/text_bold_font_primary"
+                        android:textSize="16sp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recylce_riwayat_monitoring"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
 
 
     </RelativeLayout>

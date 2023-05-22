@@ -17,4 +17,12 @@
     <color name="border_color">#FFE7E7E7</color>
     <color name="white_color">#FFFFFFFF</color>
     <color name="gradient_color">#FF246BFD</color>
+    <color name="cardBackgroundColor">#F7F7F9</color>
+
+    <!--    SEEKBAR COLOR-->
+    <color name="seek_bar_background">#ababab</color>
+    <color name="seek_bar_progress">#ffb600</color>
+    <color name="seek_bar_secondary_progress">#3399CC</color>
+    <color name="transparent_thumb">#00000000</color>
+    <color name="slide_inactive_color">#D9D9D9</color>
 </resources>
