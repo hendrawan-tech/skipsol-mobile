@@ -158,7 +158,7 @@
                         android:layout_marginBottom="20dp"
                         android:backgroundTint="@color/primary_color"
                         android:padding="15dp"
-                        android:text="LOG OUT"
+                        android:text="KIRIM"
                         android:textAppearance="@style/text_bold_plain"
                         android:textColor="@color/white_color"
                         app:cornerRadius="12dp" />
