@@ -26,14 +26,17 @@
                 android:layout_height="194.44dp"
                 android:src="@drawable/img_login" />
 
+
+
             <com.google.android.material.card.MaterialCardView
+                android:clipToOutline="false"
                 android:id="@+id/login_material_card_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/img_login"
                 android:layout_marginTop="2dp"
-                app:cardBackgroundColor="@color/white_color"
-                >
+                app:cardBackgroundColor="@color/white_color">
+
 
                 <LinearLayout
                     android:layout_width="match_parent"

@@ -30,6 +30,9 @@
 
         </activity>
 
+        <activity android:name=".auth.LupaPassword"
+            android:screenOrientation="portrait"
+            android:exported="true"/>
         <activity android:name=".navbar.HomeMenu.InputJudulTA"
             android:screenOrientation="portrait"
             android:exported="true"/>
