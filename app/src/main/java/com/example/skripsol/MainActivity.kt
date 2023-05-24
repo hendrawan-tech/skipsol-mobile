@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.skripsol.FunctionHelper.Get
 import com.example.skripsol.auth.Login
 import com.example.skripsol.config.Network
 import com.example.skripsol.navbar.HeadFragment
@@ -35,13 +37,15 @@ class MainActivity : AppCompatActivity() {
                     val dataResponse = response.body()
                     if (response.isSuccessful) {
                         MyState.setDataUser(dataResponse?.get("data")?.let { it as? Map<*, *> }?.get("user") as Map<String, Any>);
-                        val intent = Intent(this@MainActivity, HeadFragment::class.java)
-                        startActivity(intent)
-                        finish()
+//                        val intent = Intent(this@MainActivity, HeadFragment::class.java)
+//                        startActivity(intent)
+//                        finish()
+                        Get.offAll(this@MainActivity, HeadFragment::class.java)
                     } else {
-                        val intent = Intent(this@MainActivity, Login::class.java)
-                        startActivity(intent)
-                        finish()
+//                        val intent = Intent(this@MainActivity, Login::class.java)
+//                        startActivity(intent)
+//                        finish()
+                        Get.offAll(this@MainActivity, Login::class.java)
                     }
                 }
 
@@ -50,9 +54,10 @@ class MainActivity : AppCompatActivity() {
                 }
             })
         } else {
-            val intent = Intent(this, Login::class.java)
-            startActivity(intent)
-            finish()
+//            val intent = Intent(this, Login::class.java)
+//            startActivity(intent)
+//            finish()
+            Get.offAll(this, Login::class.java)
         }
     }
 }
