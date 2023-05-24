@@ -4,10 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,8 +33,14 @@ class Chat : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.chat_screen, container, false)
         val layoutManager = LinearLayoutManager(requireContext())
+        val EditTextSearchDosen :EditText = view.findViewById(R.id.search_dosen)
         recyclerView = view.findViewById(R.id.chat_recycle_view)
         recyclerView.layoutManager = layoutManager
+
+        setupTextWatcher(EditTextSearchDosen)
+
+
+
 
         fun getData() {
             val sharedPreference =
@@ -74,4 +83,19 @@ class Chat : Fragment() {
 
         return view
     }
+
+    fun setupTextWatcher(editText: EditText) {
+        editText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val searchText = s.toString()
+                adapter.filter(searchText)
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
+    }
+
+
 }
