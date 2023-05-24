@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RoundRectShape
 import android.os.Bundle
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import com.example.skripsol.FunctionHelper.Get
@@ -18,6 +19,9 @@ class VerifikasiOTP : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.verifikasi_otp_screen)
         val card : MaterialCardView = findViewById(R.id.verifikasi_otp_material_card_layout)
+        val editTextOTP : EditText = findViewById(R.id.EditText_otp_OTP)
+
+
 
         findViewById<MaterialButton>(R.id.btn_verifikasi_otp).setOnClickListener {
             Get.to(this,AturUlangPassword::class.java)
