@@ -46,7 +46,7 @@ class Login : AppCompatActivity() {
 //        CardView
         val card: MaterialCardView = findViewById(R.id.login_material_card_layout)
 
-        passwordIconAnimation(passwordTextInputLayout,password)
+//        passwordIconAnimation(passwordTextInputLayout,password)
         roundedCardOnlyTop(card)
 
         buttonLupaPassword.setOnClickListener {
@@ -131,23 +131,23 @@ class Login : AppCompatActivity() {
 
 
     //    fungsi Untuk mengubah icon mata pada password
-    private fun passwordIconAnimation(passwordTextInputLayout : TextInputLayout , passwordEditText: EditText){
-        passwordTextInputLayout.setOnClickListener {
-            val isPasswordVisible =
-                passwordEditText.inputType == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-
-            if (isPasswordVisible) {
-                // Password is currently visible, hide it
-                passwordEditText.inputType =
-                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-                passwordTextInputLayout.setEndIconDrawable(R.drawable.icon_toggle_password_false)
-            } else {
-                // Password is currently hidden, show it
-                passwordEditText.inputType =
-                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-                passwordTextInputLayout.setEndIconDrawable(R.drawable.icon_toggle_password_true)
-            }
-        }
-
-    }
+//    private fun passwordIconAnimation(passwordTextInputLayout : TextInputLayout , passwordEditText: EditText){
+//        passwordTextInputLayout.setOnClickListener {
+//            val isPasswordVisible =
+//                passwordEditText.inputType == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+//
+//            if (isPasswordVisible) {
+//                // Password is currently visible, hide it
+//                passwordEditText.inputType =
+//                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+//                passwordTextInputLayout.setEndIconDrawable(R.drawable.icon_toggle_password_false)
+//            } else {
+//                // Password is currently hidden, show it
+//                passwordEditText.inputType =
+//                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+//                passwordTextInputLayout.setEndIconDrawable(R.drawable.icon_toggle_password_true)
+//            }
+//        }
+//
+//    }
 }

@@ -5,8 +5,8 @@ import android.content.Intent
 
 object Get {
     private val argumentsMap: MutableMap<String, String> = mutableMapOf()
-    fun to(activity: Activity, targetActivitu: Class<*>, vararg arguments: Pair<String, String>) {
-        val intent = Intent(activity, targetActivitu)
+    fun to(activity: Activity, targetActivity: Class<*>, vararg arguments: Pair<String, String>) {
+        val intent = Intent(activity, targetActivity)
         arguments.forEachIndexed { index, argument ->
             intent.putExtra("arg$index", argument.second)
             argumentsMap[argument.first] = argument.second
@@ -27,7 +27,7 @@ object Get {
 
     }
 
-    fun singleDialog() {
+    fun singleOptionDialog() {
 
     }
 

@@ -1,32 +1,25 @@
 package com.example.skripsol.auth
 
-import android.annotation.SuppressLint
+
 import android.graphics.Color
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RoundRectShape
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
-import com.example.skripsol.FunctionHelper.Get
 import com.example.skripsol.R
-import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 
-class LupaPassword : AppCompatActivity() {
+class AturUlangPassword :AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.lupa_password_screen)
-        val card: MaterialCardView = findViewById(R.id.lupa_password_material_card_layout)
-
-        findViewById<MaterialButton>(R.id.btn_lupa_password_screen).setOnClickListener {
-            Get.to(this,VerifikasiOTP::class.java)
-        }
-
+        setContentView(R.layout.atur_ulang_password_screen)
+        val card :MaterialCardView = findViewById(R.id.atur_ulang_password_material_card_layout)
 
         roundedCardOnlyTop(card)
-    }
 
+    }
 
     private fun roundedCardOnlyTop(cardView: CardView) {
         val cornerRadius = 32F
@@ -46,9 +39,4 @@ class LupaPassword : AppCompatActivity() {
         }
         cardView.background = shapeDrawable
     }
-
-
-
-
-
 }

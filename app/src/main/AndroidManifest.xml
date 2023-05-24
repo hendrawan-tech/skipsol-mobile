@@ -30,14 +30,22 @@
 
         </activity>
 
+
+
+        <activity android:name=".auth.Login"
+            android:screenOrientation="portrait"/>
         <activity android:name=".auth.LupaPassword"
+            android:screenOrientation="portrait"
+            android:exported="true"/>
+        <activity android:name=".auth.AturUlangPassword"
+            android:screenOrientation="portrait"
+            android:exported="true"/>
+        <activity android:name=".auth.VerifikasiOTP"
             android:screenOrientation="portrait"
             android:exported="true"/>
         <activity android:name=".navbar.HomeMenu.InputJudulTA"
             android:screenOrientation="portrait"
             android:exported="true"/>
-        <activity android:name=".auth.Login"
-            android:screenOrientation="portrait"/>
         <activity android:name=".navbar.HomeMenu.Monitoring"
             android:screenOrientation="portrait"
             android:exported="true"/>

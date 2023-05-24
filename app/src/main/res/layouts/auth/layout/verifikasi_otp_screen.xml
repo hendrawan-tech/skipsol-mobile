@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary_color"
-    tools:context=".auth.LupaPassword">
+    tools:context=".auth.VerifikasiOTP">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -28,14 +27,13 @@
                 android:src="@drawable/img_login" />
 
 
-
             <com.google.android.material.card.MaterialCardView
-                android:clipToOutline="false"
-                android:id="@+id/lupa_password_material_card_layout"
+                android:id="@+id/verifikasi_otp_material_card_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/img_login"
                 android:layout_marginTop="2dp"
+                android:clipToOutline="false"
                 app:cardBackgroundColor="@color/white_color">
 
 
@@ -55,7 +53,7 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Lupa Password"
+                        android:text="Verifikasi OTP"
                         android:textAppearance="@style/text_bold_primary"
                         android:textSize="24sp" />
 
@@ -63,10 +61,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:textAlignment="textStart"
-                        android:text="Silahkan masukkan email Anda yang telah terdaftar.
-Kode otp untuk mengatur ulang password akan kami
-kirimkan via email."
+                        android:text="Silahkan masukkan kode verifikasi yang telah kami
+kirimkan ke e-mail anda. Jangan berikan kode verifikasi
+kepada siapapun !"
                         android:textAppearance="@style/text_regular_secondary"
                         android:textSize="12sp" />
 
@@ -74,11 +71,11 @@ kirimkan via email."
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text="Email"
+                        android:text="Kode Verifikasi OTP"
                         android:textAppearance="@style/text_regular_font_primary" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/InputLayout_lupa_password_email"
+                        android:id="@+id/InputLayout_otp_OTP"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -88,11 +85,12 @@ kirimkan via email."
                         app:hintEnabled="false">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/EditText_login_nim"
+                            android:id="@+id/EditText_otp_OTP"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/golos_text_regular"
-                            android:hint="email@example.org"
+                            android:hint=""
+                            android:inputType="number"
                             android:maxLines="1"
                             android:padding="15dp"
                             android:textColor="@color/font_primary_color"
@@ -100,22 +98,32 @@ kirimkan via email."
                             android:textSize="12sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
+
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/error_email_notif"
+                        android:id="@+id/error_nimNotif"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Email yang anda masukkan tidak valid/tidak terdaftar"
                         android:fontFamily="@font/golos_text_regular"
+                        android:text="NIM yang anda masukkan tidak valid/tidak terdaftar"
                         android:textSize="12sp"
-                        android:visibility="gone"/>
+                        android:visibility="gone" />
 
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/verifikasi_otp_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="99dp"
+                        android:gravity="center"
+                        android:text="00:32"
+                        android:textAppearance="@style/text_regular_primary" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_lupa_password_screen"
+                        android:id="@+id/btn_verifikasi_otp"
                         style="@style/Widget.MaterialComponents.Button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="133dp"
                         android:layout_marginBottom="37dp"
                         android:backgroundTint="@color/primary_color"
                         android:text="SELANJUTNYA"
@@ -133,7 +141,6 @@ kirimkan via email."
 
 
     </ScrollView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,29 +4,29 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RoundRectShape
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import com.example.skripsol.FunctionHelper.Get
 import com.example.skripsol.R
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 
-class LupaPassword : AppCompatActivity() {
-
+class VerifikasiOTP : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.lupa_password_screen)
-        val card: MaterialCardView = findViewById(R.id.lupa_password_material_card_layout)
+        setContentView(R.layout.verifikasi_otp_screen)
+        val card : MaterialCardView = findViewById(R.id.verifikasi_otp_material_card_layout)
 
-        findViewById<MaterialButton>(R.id.btn_lupa_password_screen).setOnClickListener {
-            Get.to(this,VerifikasiOTP::class.java)
+        findViewById<MaterialButton>(R.id.btn_verifikasi_otp).setOnClickListener {
+            Get.to(this,AturUlangPassword::class.java)
         }
 
-
         roundedCardOnlyTop(card)
-    }
 
+
+    }
 
     private fun roundedCardOnlyTop(cardView: CardView) {
         val cornerRadius = 32F
@@ -46,9 +46,6 @@ class LupaPassword : AppCompatActivity() {
         }
         cardView.background = shapeDrawable
     }
-
-
-
 
 
 }
