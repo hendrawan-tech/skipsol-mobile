@@ -1,51 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+
     android:background="@color/white_color"
     tools:context=".navbar.HomeMenu.InputJudulTA">
 
-    <ScrollView
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/appbar_input_judul_ta"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="62dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/toolbar_bottom_border"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/appbar_input_judul_ta"
-                android:layout_width="match_parent"
-                android:layout_height="62dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/toolbar_bottom_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+            <ImageView
+                android:id="@+id/btn_back_input_judul_ta"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/icon_back" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="Input Judul TA"
-                    android:textAppearance="@style/text_bold_font_primary"
-                    android:textSize="16sp" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Input Judul TA"
+                android:textAppearance="@style/text_bold_font_primary"
+                android:textSize="16sp" />
 
-            </com.google.android.material.appbar.MaterialToolbar>
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/appbar_input_judul_ta">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/appbar_input_judul_ta"
+
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="12dp"
                 android:orientation="vertical">
@@ -69,7 +75,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/EditText_input_judul_ta"
                         android:layout_width="match_parent"
-                        android:layout_height="58dp"
+                        android:layout_height="wrap_content"
                         android:fontFamily="@font/golos_text_regular"
                         android:hint=" "
                         android:maxLines="1"
@@ -99,11 +105,15 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/EditText_abstrak_ta"
                         android:layout_width="match_parent"
-                        android:layout_height="58dp"
+                        android:layout_height="118dp"
                         android:fontFamily="@font/golos_text_regular"
+                        android:gravity="top"
                         android:hint=" "
-                        android:maxLines="1"
+                        android:inputType="textMultiLine"
+                        android:overScrollMode="always"
                         android:padding="15dp"
+                        android:scrollbarStyle="insideInset"
+                        android:scrollbars="vertical"
                         android:textColor="@color/font_primary_color"
                         android:textColorHint="@color/font_secondary_variant"
                         android:textSize="12sp" />
@@ -116,28 +126,37 @@
                     android:text="Dosen Pembimbing 1"
                     android:textAppearance="@style/text_semi_bold_font_primary" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/InputLayout_dosen_pembimbing_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:background="@drawable/text_field_round_border"
-                    app:boxBackgroundMode="none"
-                    app:hintEnabled="false">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/EditText_dosen_pembimbing_1"
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/ExposedDropdownStyle"
                         android:layout_width="match_parent"
                         android:layout_height="58dp"
-                        android:fontFamily="@font/golos_text_regular"
-                        android:hint=" "
-                        android:maxLines="1"
-                        android:padding="15dp"
-                        android:textColor="@color/font_primary_color"
-                        android:textColorHint="@color/font_secondary_variant"
-                        android:textSize="12sp" />
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        android:layout_marginBottom="15dp"
+                        app:endIconDrawable="@drawable/arrow_pilih_dosen"
+                        app:endIconTint="@color/black"
+                        app:hintTextAppearance="@style/text_regular_font_primary"
+                        android:background="@drawable/text_field_round_border"
+                        app:hintEnabled="false">
 
-                </com.google.android.material.textfield.TextInputLayout>
+                        <AutoCompleteTextView
+                            android:id="@+id/pilih_dosen_pembimbing1"
+                            android:layout_width="match_parent"
+                            android:layout_height="58dp"
+                            android:backgroundTint="@color/primary_color"
+                            android:dropDownSelector="@drawable/filter_spinner_dropdown_bg"
+                            android:textAppearance="@style/text_regular_font_primary"
+                            android:textColor="@color/font_primary_color"
+                            android:hint="Pilih Dosen Pembimbing 1"
+                            android:inputType="none"
+                            android:focusable="false"
+                            android:textColorHint="@color/font_primary_color" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
@@ -147,25 +166,32 @@
                     android:textAppearance="@style/text_semi_bold_font_primary" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/InputLayout_dosen_pembimbing_2"
+                    style="@style/ExposedDropdownStyle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
+                    android:layout_height="58dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    android:layout_marginBottom="15dp"
+                    app:endIconDrawable="@drawable/arrow_pilih_dosen"
+                    app:endIconTint="@color/black"
+                    app:hintTextAppearance="@style/text_regular_font_primary"
                     android:background="@drawable/text_field_round_border"
-                    app:boxBackgroundMode="none"
                     app:hintEnabled="false">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/EditText_dosen_pembimbing_2"
+                    <AutoCompleteTextView
+                        android:id="@+id/pilih_dosen_pembimbing2"
                         android:layout_width="match_parent"
                         android:layout_height="58dp"
-                        android:fontFamily="@font/golos_text_regular"
-                        android:hint=" "
-                        android:maxLines="1"
-                        android:padding="15dp"
+                        android:backgroundTint="@color/primary_color"
+                        android:dropDownSelector="@drawable/filter_spinner_dropdown_bg"
+                        android:textAppearance="@style/text_regular_font_primary"
                         android:textColor="@color/font_primary_color"
-                        android:textColorHint="@color/font_secondary_variant"
-                        android:textSize="12sp" />
+                        android:hint="Pilih Dosen Pembimbing 2"
+                        android:inputType="none"
+                        android:focusable="false"
+                        android:textColorHint="@color/font_primary_color" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -177,45 +203,53 @@
                     android:textAppearance="@style/text_semi_bold_font_primary" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/InputLayout_dosen_pembimbing_3"
+                    style="@style/ExposedDropdownStyle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="58dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    android:layout_marginBottom="15dp"
+                    app:endIconDrawable="@drawable/arrow_pilih_dosen"
+                    app:endIconTint="@color/black"
+                    app:hintTextAppearance="@style/text_regular_font_primary"
                     android:background="@drawable/text_field_round_border"
-                    app:boxBackgroundMode="none"
                     app:hintEnabled="false">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/EditText_dosen_pembimbing_3"
+                    <AutoCompleteTextView
+                        android:id="@+id/pilih_dosen_pembimbing3"
                         android:layout_width="match_parent"
                         android:layout_height="58dp"
-                        android:fontFamily="@font/golos_text_regular"
-                        android:hint=" "
-                        android:maxLines="1"
-                        android:padding="15dp"
+                        android:backgroundTint="@color/primary_color"
+                        android:dropDownSelector="@drawable/filter_spinner_dropdown_bg"
+                        android:textAppearance="@style/text_regular_font_primary"
                         android:textColor="@color/font_primary_color"
-                        android:textColorHint="@color/font_secondary_variant"
-                        android:textSize="12sp" />
+                        android:hint="Pilih Dosen Pembimbing 3"
+                        android:inputType="none"
+                        android:focusable="false"
+                        android:textColorHint="@color/font_primary_color" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.MaterialComponents.Button"
                     android:layout_width="match_parent"
                     android:layout_height="51dp"
-                    app:cornerRadius="12dp"
                     android:layout_marginTop="57dp"
                     android:layout_marginBottom="30dp"
-                    android:text="KIRIM"
-                    style="@style/Widget.MaterialComponents.Button"
                     android:backgroundTint="@color/primary_color"
+                    android:text="KIRIM"
                     android:textAppearance="@style/text_bold_plain"
-                    android:textColor="@color/white_color" />
-
-
+                    android:textColor="@color/white_color"
+                    app:cornerRadius="12dp" />
 
 
             </LinearLayout>
-        </RelativeLayout>
 
-    </ScrollView>
+        </ScrollView>
+
+    </RelativeLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

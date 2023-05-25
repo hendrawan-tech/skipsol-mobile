@@ -5,19 +5,19 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
 import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.skripsol.FunctionHelper.Get
 import com.example.skripsol.R
-import com.example.skripsol.navbar.ChatAdapter.ChatData
-
 import com.example.skripsol.navbar.HomeMenu.UpdateStatusAdapter.UpdateStatusAdapter
 import com.example.skripsol.navbar.HomeMenu.UpdateStatusAdapter.UpdateStatusData
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
+
 
 class UpdateStatus : AppCompatActivity() {
     private var activeButton: MaterialButton? = null
@@ -30,20 +30,34 @@ class UpdateStatus : AppCompatActivity() {
     private lateinit var button6: MaterialButton
 
     private lateinit var UpdateStatusRecycleView: RecyclerView
+
     private lateinit var updateStatusAdapter: UpdateStatusAdapter
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.update_status_screen)
 
+
         val ButtonUpdateStatus = findViewById<MaterialButton>(R.id.button_update_status)
         val cardView = findViewById<MaterialCardView>(R.id.card_view)
 
+
         UpdateStatusRecycleView = findViewById(R.id.riwayat_status_recycle_view)
-        updateStatusAdapter = UpdateStatusAdapter(getDataUpdateStatus())
+        updateStatusAdapter = UpdateStatusAdapter(generateRandomData())
 
         UpdateStatusRecycleView.layoutManager = LinearLayoutManager(this)
         UpdateStatusRecycleView.adapter = updateStatusAdapter
+
+
+      findViewById<ImageView>(R.id.btn_back_update_status).setOnClickListener {
+
+            Get.back(this)
+
+
+        }
+
 
 
         ButtonUpdateStatus.setOnClickListener {
@@ -123,9 +137,8 @@ class UpdateStatus : AppCompatActivity() {
         activeButton = clickedButton
         ButtonUpdateStatus.text = clickedButton.text
         ButtonUpdateStatus.icon = ContextCompat.getDrawable(this, R.drawable.icon_arrow_up)
-//        Handler().postDelayed({
-//            cardView.visibility = View.GONE
-//        }, cardCloseDelay)
+
+//        Fungsi Untuk Visible dan Gone Card dengan konsep DropDown Button
         if (cardView.visibility == View.VISIBLE) {
             val fadeOutAnimator = ObjectAnimator.ofFloat(cardView, "alpha", 1f, 0f)
             fadeOutAnimator.duration = 250
@@ -156,37 +169,44 @@ class UpdateStatus : AppCompatActivity() {
 
     }
 
-    private fun getDataUpdateStatus(): List<UpdateStatusData> {
-        val updateStatusList = mutableListOf<UpdateStatusData>()
-        val listUpdateStatus = listOf(
-            "Belum input judul TA ",
-            "Sudah input judul TA",
-//            "Sudah Sempro",
-            "Sudah melakukan sidang",
-//            "Lulus dengan revisi",
-//            "Belum Lulus"
-        ).random()
-        val tanggal = (1..30).random()
-        val bulan = (1..12).random()
-        val tahun = listOf(2021, 2022, 2023).random()
-//        val verifiedStatus: Boolean = listOf(true, false).random()
 
-        for (i in 1..30) {
+   private  fun generateRandomData(): List<UpdateStatusData> {
 
-            val randomDate = "$tanggal/$bulan/$tahun"
-            updateStatusList.add(
+
+        val randomData = mutableListOf<UpdateStatusData>()
+
+        repeat(10) {
+            val updateStatus = arrayOf(
+                "Belum input judul TA",
+                "Sudah input judul TA",
+                "Sudah Sempro",
+                "Sudah melakukan sidang",
+                "Lulus dengan revisi",
+                "Belum Lulus"
+            ).random()
+            val verify = arrayOf(true, false).random()
+            val hari = (1..31).random()
+            val bulan = (1..12).random()
+            val tahun = (2018..2023).random()
+            val tanggal = "$hari- $bulan - $tahun"
+
+
+            randomData.add(
                 UpdateStatusData(
                     R.drawable.img_model_profile,
-                    "${listUpdateStatus.random()}",
-                    "${randomDate.random()}", true
+                    updateStatus,
+                    tanggal,
+                    verify
                 )
             )
         }
-        return updateStatusList
-    }
+        return randomData
 
 
     }
+
+
+}
 
 
 

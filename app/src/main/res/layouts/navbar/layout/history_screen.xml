@@ -15,33 +15,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/appbar_riwayat"
-            android:layout_width="match_parent"
-            android:layout_height="62dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/toolbar_bottom_border"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Riwayat Judul"
-                android:textAppearance="@style/text_bold_font_primary"
-                android:textSize="16sp" />
-
-        </com.google.android.material.appbar.MaterialToolbar>
 
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/search_lecture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/appbar_riwayat"
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
             android:background="@drawable/rounded_border"

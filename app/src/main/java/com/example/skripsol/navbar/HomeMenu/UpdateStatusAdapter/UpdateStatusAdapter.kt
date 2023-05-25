@@ -3,6 +3,7 @@ package com.example.skripsol.navbar.HomeMenu.UpdateStatusAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skripsol.R
@@ -22,11 +23,11 @@ class UpdateStatusAdapter(private val itemList: List<UpdateStatusData>) : Recycl
         holder.UpdateStatusImage.setImageResource(item.UpdateStatusImage)
         holder.UpdateStatusTitle.text= item.UpdadateStatusTitle
         holder.UpdateStatusDate.text = item.UpdateStatusDate
-//        if (item.UpdateStatusVerified){
-//            holder.UpdateStatusVerified.visibility = View.VISIBLE
-//        }else{
-//            holder.UpdateStatusVerified.visibility = View.INVISIBLE
-//        }
+        if (item.UpdateStatusVerified){
+            holder.UpdateStatusVerified.visibility = View.VISIBLE
+        }else{
+            holder.UpdateStatusVerified.visibility = View.INVISIBLE
+        }
 
 
 
@@ -40,6 +41,6 @@ class UpdateStatusAdapter(private val itemList: List<UpdateStatusData>) : Recycl
         val UpdateStatusImage: CircleImageView = itemView.findViewById(R.id.update_status_image)
         val UpdateStatusTitle: TextView = itemView.findViewById(R.id.update_status_title)
         val UpdateStatusDate: TextView = itemView.findViewById(R.id.update_status_date)
-//        val UpdateStatusVerified : LinearLayout = itemView.findViewById(R.id.update_status_verified)
+        val UpdateStatusVerified : ImageView = itemView.findViewById(R.id.update_status_verified)
     }
 }
