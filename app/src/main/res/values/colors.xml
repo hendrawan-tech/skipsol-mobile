@@ -18,6 +18,7 @@
     <color name="white_color">#FFFFFFFF</color>
     <color name="gradient_color">#FF246BFD</color>
     <color name="cardBackgroundColor">#F7F7F9</color>
+    <color name="red_colorButton">#FF0000</color>
 
     <!--    SEEKBAR COLOR-->
     <color name="seek_bar_background">#ababab</color>

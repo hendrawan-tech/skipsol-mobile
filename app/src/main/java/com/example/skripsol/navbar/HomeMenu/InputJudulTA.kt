@@ -1,17 +1,35 @@
 package com.example.skripsol.navbar.HomeMenu
 
 
-
+import android.app.Activity
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.renderscript.Allocation
+import android.renderscript.Element
+import android.renderscript.RenderScript
+import android.renderscript.ScriptIntrinsicBlur
+import android.view.LayoutInflater
 import android.view.MotionEvent
+import android.view.View
 import android.view.View.OnTouchListener
+import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.drawable.toDrawable
 import com.example.skripsol.FunctionHelper.Get
 import com.example.skripsol.R
+import com.google.android.material.button.MaterialButton
 
 import com.google.android.material.textfield.TextInputLayout
+import com.google.android.material.textview.MaterialTextView
 
 
 class InputJudulTA : AppCompatActivity() {
@@ -26,15 +44,15 @@ class InputJudulTA : AppCompatActivity() {
 
         val inputLayoutAbstrakTA: TextInputLayout = findViewById(R.id.InputLayout_abstrak_ta)
         val editTextAbstrakTA: EditText = findViewById(R.id.EditText_abstrak_ta)
+        val btnKirimInputJudulTA: MaterialButton = findViewById(R.id.btn_kirim_input_judul_ta)
+
+        btnKirimInputJudulTA.setOnClickListener {
+            Get.dialog(this, "Apakah anda yakin", "Ingin mengirim Judul TA ?")
+
+        }
 
 
         setupDropDownPilihDosenPembimbing()
-
-
-
-
-
-
 
 //       Scroll Function On Text
         scrollAbleEdittext(editTextAbstrakTA)
@@ -62,18 +80,12 @@ class InputJudulTA : AppCompatActivity() {
 
     private fun setupDropDownPilihDosenPembimbing(autoCompleteTextView: AutoCompleteTextView) {
         val items = listOf(
-            "Ery Julev Setiawan",
-            "Aji Seto",
-            "Ratih Ayuninghemi",
-            "Hermawan",
-            "I Gede Wiryawan"
+            "Ery Julev Setiawan", "Aji Seto", "Ratih Ayuninghemi", "Hermawan", "I Gede Wiryawan"
         )
 
         autoCompleteTextView.setDropDownBackgroundDrawable(
             ResourcesCompat.getDrawable(
-                resources,
-                R.drawable.filter_spinner_dropdown_bg,
-                null
+                resources, R.drawable.filter_spinner_dropdown_bg, null
             )
         )
         val adapter = ArrayAdapter(this, R.layout.input_judul_ta_list_item, items)

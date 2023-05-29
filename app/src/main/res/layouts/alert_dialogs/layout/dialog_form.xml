@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/rounded_alert_dialog"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
+    <ImageView
+        android:layout_gravity="center"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/img_alert_dialog"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/alertDialogTitle"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/text_regular_primary"
+        android:text="Apkah anda yain ingin" />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/alertDialogSubtitle"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/text_regular_primary"
+        android:text="Yakin apa coba ?" />
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_positive_response"
+            app:cornerRadius="8dp"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:text="Ya kirim"
+           android:textColor="@color/white_color"
+            android:textSize="14sp"
+            android:fontFamily="@font/golos_text_semi_bold"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_negative_response"
+            app:cornerRadius="8dp"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/red_colorButton"
+            android:text="batal"
+            android:textColor="@color/white_color"
+            android:textSize="14sp"
+            android:fontFamily="@font/golos_text_semi_bold"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
