@@ -3,20 +3,36 @@ package com.example.skripsol.navbar.HomeMenu
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skripsol.FunctionHelper.Get
 import com.example.skripsol.R
+import com.example.skripsol.auth.Login
+import com.example.skripsol.config.Network
+import com.example.skripsol.navbar.HeadFragment
 import com.example.skripsol.navbar.HomeMenu.UpdateStatusAdapter.UpdateStatusAdapter
 import com.example.skripsol.navbar.HomeMenu.UpdateStatusAdapter.UpdateStatusData
+import com.example.skripsol.navbar.RiwayatJudulAdapter.RiwayatJudulAdapter
+import com.example.skripsol.state.MyState
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.textview.MaterialTextView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class UpdateStatus : AppCompatActivity() {
@@ -29,29 +45,31 @@ class UpdateStatus : AppCompatActivity() {
     private lateinit var button5: MaterialButton
     private lateinit var button6: MaterialButton
 
-    private lateinit var UpdateStatusRecycleView: RecyclerView
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: UpdateStatusAdapter
 
-    private lateinit var updateStatusAdapter: UpdateStatusAdapter
+    private val itemList = ArrayList<Map<String, Any>>()
+    private var statusValue = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.update_status_screen)
-
+        recyclerView = findViewById(R.id.riwayat_status_recycle_view)
 
         val ButtonUpdateStatus = findViewById<MaterialButton>(R.id.button_update_status)
         val cardView = findViewById<MaterialCardView>(R.id.card_view)
 
+        val layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = layoutManager
+        getData()
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        adapter = UpdateStatusAdapter(itemList)
+        recyclerView.adapter = adapter
 
-        UpdateStatusRecycleView = findViewById(R.id.riwayat_status_recycle_view)
-        updateStatusAdapter = UpdateStatusAdapter(generateRandomData())
 
-        UpdateStatusRecycleView.layoutManager = LinearLayoutManager(this)
-        UpdateStatusRecycleView.adapter = updateStatusAdapter
-
-
-      findViewById<ImageView>(R.id.btn_back_update_status).setOnClickListener {
+        findViewById<ImageView>(R.id.btn_back_update_status).setOnClickListener {
             Get.back(this)
         }
 
@@ -60,7 +78,7 @@ class UpdateStatus : AppCompatActivity() {
             Get.dialog(
                 this, "Apakah anda yakin", "Ingin Update Status ?",
                 onClickPositive = {
-
+                    submit()
                 },
                 onCLickNegative = {
 
@@ -68,8 +86,6 @@ class UpdateStatus : AppCompatActivity() {
 
                 )
         }
-
-
 
         ButtonUpdateStatus.setOnClickListener {
             if (cardView.visibility == View.VISIBLE) {
@@ -111,29 +127,99 @@ class UpdateStatus : AppCompatActivity() {
 
 
         button1.setOnClickListener {
-            handleButtonClick(button1)
+            handleButtonClick(button1, "Belum Input Judul TA")
         }
         button2.setOnClickListener {
-            handleButtonClick(button2)
+            handleButtonClick(button2, "Sudah Input Judul TA")
         }
         button3.setOnClickListener {
-            handleButtonClick(button3)
+            handleButtonClick(button3, "Sudah Sempro")
         }
         button4.setOnClickListener {
-            handleButtonClick(button4)
+            handleButtonClick(button4, "Sudah Melakukan Sidang")
         }
         button5.setOnClickListener {
-            handleButtonClick(button5)
+            handleButtonClick(button5, "Lulus Dengan Revisi")
         }
         button6.setOnClickListener {
-            handleButtonClick(button6)
+            handleButtonClick(button6, "Belum Lulus")
         }
 
 
     }
 
+    private fun submit() {
+        val sharedPreference = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val token: String? = sharedPreference.getString("token", null)
+        if (token !== null) {
+            Network.instance.addStatus(statusValue, token)
+                .enqueue(object : Callback<Map<String, Any>> {
+                    @SuppressLint("WrongViewCast")
+                    override fun onResponse(
+                        call: Call<Map<String, Any>>, response: Response<Map<String, Any>>
+                    ) {
+                        if (response.isSuccessful) {
+                            Toast.makeText(
+                                this@UpdateStatus, "Berhasil Update Status", Toast.LENGTH_SHORT
+                            ).show()
+                            itemList.clear()
+                            getData()
+                        } else {
+                            Toast.makeText(
+                                this@UpdateStatus, "Fetch data error", Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
 
-    private fun handleButtonClick(clickedButton: MaterialButton) {
+                    override fun onFailure(call: Call<Map<String, Any>>, t: Throwable) {
+                        Toast.makeText(this@UpdateStatus, t.message.toString(), Toast.LENGTH_SHORT)
+                            .show()
+                                Log.e("asd", t.message.toString())
+                    }
+                })
+        } else {
+            val intent = Intent(this@UpdateStatus, Login::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun getData() {
+        val sharedPreference = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val token: String? = sharedPreference.getString("token", null)
+        if (token !== null) {
+            Network.instance.getStatus(token).enqueue(object : Callback<Map<String, Any>> {
+                @SuppressLint("WrongViewCast")
+                override fun onResponse(
+                    call: Call<Map<String, Any>>, response: Response<Map<String, Any>>
+                ) {
+                    val dataResponse = response.body()
+                    if (response.isSuccessful && dataResponse != null) {
+                        val data = dataResponse["data"] as? List<Map<String, Any>>
+                        Log.e("asd", data.toString())
+                        if (data != null) {
+                            itemList.addAll(data)
+                            adapter = UpdateStatusAdapter(itemList)
+                            recyclerView.adapter = adapter
+                        }
+                    } else {
+                        Toast.makeText(this@UpdateStatus, "Error fetch data", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+
+                override fun onFailure(call: Call<Map<String, Any>>, t: Throwable) {
+                    Toast.makeText(this@UpdateStatus, t.message.toString(), Toast.LENGTH_SHORT)
+                        .show()
+                }
+            })
+        } else {
+            val intent = Intent(this@UpdateStatus, Login::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun handleButtonClick(clickedButton: MaterialButton, status: String) {
+        statusValue = status;
         val ButtonUpdateStatus = findViewById<MaterialButton>(R.id.button_update_status)
         val cardView = findViewById<MaterialCardView>(R.id.card_view)
         activeButton?.apply {
@@ -179,43 +265,6 @@ class UpdateStatus : AppCompatActivity() {
         }
 
     }
-
-
-   private  fun generateRandomData(): List<UpdateStatusData> {
-
-
-        val randomData = mutableListOf<UpdateStatusData>()
-
-        repeat(10) {
-            val updateStatus = arrayOf(
-                "Belum input judul TA",
-                "Sudah input judul TA",
-                "Sudah Sempro",
-                "Sudah melakukan sidang",
-                "Lulus dengan revisi",
-                "Belum Lulus"
-            ).random()
-            val verify = arrayOf(true, false).random()
-            val hari = (1..31).random()
-            val bulan = (1..12).random()
-            val tahun = (2018..2023).random()
-            val tanggal = "$hari- $bulan - $tahun"
-
-
-            randomData.add(
-                UpdateStatusData(
-                    R.drawable.img_model_profile,
-                    updateStatus,
-                    tanggal,
-                    verify
-                )
-            )
-        }
-        return randomData
-
-
-    }
-
 
 }
 

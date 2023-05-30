@@ -11,7 +11,7 @@ import com.example.skripsol.R
 import de.hdodenhof.circleimageview.CircleImageView
 
 
-class UpdateStatusAdapter(private val itemList: List<UpdateStatusData>) : RecyclerView.Adapter<UpdateStatusAdapter.ViewHolder>() {
+class UpdateStatusAdapter(private var itemList: List<Map<String, Any>>) : RecyclerView.Adapter<UpdateStatusAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recycle_update_status_screen, parent, false)
@@ -20,10 +20,10 @@ class UpdateStatusAdapter(private val itemList: List<UpdateStatusData>) : Recycl
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = itemList[position]
-        holder.UpdateStatusImage.setImageResource(item.UpdateStatusImage)
-        holder.UpdateStatusTitle.text= item.UpdadateStatusTitle
-        holder.UpdateStatusDate.text = item.UpdateStatusDate
-        if (item.UpdateStatusVerified){
+        holder.UpdateStatusImage.setImageResource(R.drawable.img_model_profile)
+        holder.UpdateStatusTitle.text= item["name"].toString()
+        holder.UpdateStatusDate.text = item["created_at"].toString()
+        if (item["is_verified"].toString() === "1"){
             holder.UpdateStatusVerified.visibility = View.VISIBLE
         }else{
             holder.UpdateStatusVerified.visibility = View.INVISIBLE
