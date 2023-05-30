@@ -2,12 +2,14 @@ package com.example.skripsol.auth
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RoundRectShape
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
@@ -16,6 +18,7 @@ import androidx.cardview.widget.CardView
 import com.example.skripsol.FunctionHelper.Get
 import com.example.skripsol.R
 import com.example.skripsol.config.Network
+import com.example.skripsol.navbar.HeadFragment
 import com.example.skripsol.state.MyState
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.TextInputLayout
@@ -66,6 +69,7 @@ class Login : AppCompatActivity() {
                     button.text = "Login"
                     button.isEnabled = true
                     val dataResponse = response.body()
+                    Log.e("asd", dataResponse.toString())
                     if (response.isSuccessful) {
                         val editor: SharedPreferences.Editor = sharedPreference.edit()
                         editor.putString(
@@ -79,7 +83,8 @@ class Login : AppCompatActivity() {
                             dataResponse?.get("data")?.let { it as? Map<String, Any> }
                                 ?.get("user") as Map<String, Any>
                         );
-
+                        val intent = Intent(this@Login, HeadFragment::class.java)
+                        startActivity(intent)
                     } else {
                         Toast.makeText(
                             this@Login, "Fetch data error",
@@ -91,7 +96,6 @@ class Login : AppCompatActivity() {
                         txtErrorNim.visibility = View.VISIBLE
                         txtErrorPassword.setTextColor(Color.RED)
                         txtErrorPassword.visibility = View.VISIBLE
-
                     }
                 }
 

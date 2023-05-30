@@ -30,21 +30,23 @@ class MainActivity : AppCompatActivity() {
     private fun getData() {
         val sharedPreference = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val token: String? = sharedPreference.getString("token", null)
+        Log.e("ADS", token.toString())
         if (token !== null) {
             Network.instance.getProfile(token).enqueue(object : Callback<Map<String, Any>> {
                 @SuppressLint("WrongViewCast")
                 override fun onResponse(call: Call<Map<String, Any>>, response: Response<Map<String, Any>>) {
                     val dataResponse = response.body()
+                    Log.e("ADS", dataResponse.toString())
                     if (response.isSuccessful) {
                         MyState.setDataUser(dataResponse?.get("data")?.let { it as? Map<*, *> }?.get("user") as Map<String, Any>);
-//                        val intent = Intent(this@MainActivity, HeadFragment::class.java)
-//                        startActivity(intent)
-//                        finish()
+                        val intent = Intent(this@MainActivity, HeadFragment::class.java)
+                        startActivity(intent)
+                        finish()
                         Get.offAll(this@MainActivity, HeadFragment::class.java)
                     } else {
-//                        val intent = Intent(this@MainActivity, Login::class.java)
-//                        startActivity(intent)
-//                        finish()
+                        val intent = Intent(this@MainActivity, Login::class.java)
+                        startActivity(intent)
+                        finish()
                         Get.offAll(this@MainActivity, Login::class.java)
                     }
                 }
@@ -54,9 +56,9 @@ class MainActivity : AppCompatActivity() {
                 }
             })
         } else {
-//            val intent = Intent(this, Login::class.java)
-//            startActivity(intent)
-//            finish()
+            val intent = Intent(this, Login::class.java)
+            startActivity(intent)
+            finish()
             Get.offAll(this, Login::class.java)
         }
     }

@@ -47,7 +47,7 @@ class Chat : Fragment() {
                 requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
             val token: String? = sharedPreference.getString("token", null)
             if (token !== null) {
-                Network.instance.getChats(token, 10).enqueue(object : Callback<Map<String, Any>> {
+                Network.instance.getChats(token, 100).enqueue(object : Callback<Map<String, Any>> {
                     @SuppressLint("WrongViewCast")
                     override fun onResponse(
                         call: Call<Map<String, Any>>,
@@ -55,11 +55,9 @@ class Chat : Fragment() {
                     ) {
                         val dataResponse = response.body()
                         if (response.isSuccessful && dataResponse != null) {
-                            val data = dataResponse["data"] as? Map<String, Any>
-                            val user = data?.get("user") as? Map<String, Any>
-                            val dataList = user?.get("data") as? List<Map<String, Any>>
-                            if (dataList != null) {
-                                itemList.addAll(dataList)
+                            val data = dataResponse["data"] as? List<Map<String, Any>>
+                            if (data != null) {
+                                itemList.addAll(data)
                                 adapter = ChatAdapter(itemList)
                                 recyclerView.adapter = adapter
                             }
