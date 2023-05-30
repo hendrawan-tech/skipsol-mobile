@@ -10,6 +10,9 @@ interface Endpoint {
     @GET("user/dosen-pembimbing")
     fun getChats(@Header("Authorization") token: String, @Query("limit") limit: Int): Call<Map<String, Any>>
 
+    @GET("user/skripsi/history")
+    fun getHistoryJudul(@Header("Authorization")token: String, @Query("limit") limit: Int): Call<Map<String, Any>>
+
     @FormUrlEncoded
     @POST("login")
     fun login(
