@@ -44,6 +44,7 @@ android {
                 'src/main/res/layouts/alert_dialogs',
                 'src/main/res/assets/icons',
                 'src/main/res/assets/images',
+                'src/main/res/assets/lotties',
                 'src/main/res/assets/background',
                 'src/main/res/assets/borders'
             ]
@@ -65,4 +66,5 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.3.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'nl.joery.animatedbottombar:library:1.1.0'
+    implementation 'com.airbnb.android:lottie:4.2.0'
 }
