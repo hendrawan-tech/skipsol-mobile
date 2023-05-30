@@ -3,7 +3,10 @@ package com.example.skripsol.FunctionHelper
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
+import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.skripsol.R
@@ -109,14 +112,74 @@ object Get {
         alertDialog.show()
         GetBlured.applyBlur(activity, true)
         btnPositive.setOnClickListener {
-            Toast.makeText(activity, "Tombol kirim diklik", Toast.LENGTH_SHORT).show()
+
             alertDialog.dismiss()
             GetBlured.applyBlur(activity, false)
             onClickPositive?.invoke()
         }
 
         btnNegative.setOnClickListener {
-            Toast.makeText(activity, "Tombol batal diklik", Toast.LENGTH_SHORT).show()
+
+            alertDialog.dismiss()
+            GetBlured.applyBlur(activity, false)
+            onCLickNegative?.invoke()
+        }
+    }
+
+
+    fun dialogWithImage(
+        @Required activity: Context?,
+        Title: String,
+        Subtitle: String,
+        Image : Drawable?,
+        positiveButtonText: String?,
+        negativeButtonText: String?,
+        onClickPositive: (() -> Unit)? = null,
+        onCLickNegative: (() -> Unit)? = null
+    ) {
+        val dialogView = LayoutInflater.from(activity).inflate(R.layout.dialog_form, null)
+
+        val textViewTitle = dialogView.findViewById<MaterialTextView>(R.id.alertDialogTitle)
+        val textviewSubtitle = dialogView.findViewById<MaterialTextView>(R.id.alertDialogSubtitle)
+        val imageView : ImageView =  dialogView.findViewById(R.id.image_dialog)
+        val btnPositive: MaterialButton = dialogView.findViewById(R.id.btn_positive_response)
+        val btnNegative: MaterialButton = dialogView.findViewById(R.id.btn_negative_response)
+        val alertDialogBuilder = AlertDialog.Builder(activity!!).setView(dialogView)
+
+        textViewTitle.text = Title.toString()
+        textviewSubtitle.text = Subtitle.toString()
+
+
+        if (Image != null) {
+            imageView.setImageDrawable(Image) // Set custom image
+            imageView.visibility = View.VISIBLE // Tampilkan image jika ada
+        } else {
+            imageView.visibility = View.GONE // Sembunyikan image jika tidak ada
+        }
+
+        if (!positiveButtonText.isNullOrEmpty()) {
+            btnPositive.text = positiveButtonText// Set teks pada btnPositive jika tidak null atau empty
+        }
+
+        if (!negativeButtonText.isNullOrEmpty()) {
+            btnNegative.text = negativeButtonText // Set teks pada btnNegative jika tidak null atau empty
+        }
+
+
+        val alertDialog = alertDialogBuilder.create()
+
+
+        alertDialog.show()
+        GetBlured.applyBlur(activity, true)
+        btnPositive.setOnClickListener {
+
+            alertDialog.dismiss()
+            GetBlured.applyBlur(activity, false)
+            onClickPositive?.invoke()
+        }
+
+        btnNegative.setOnClickListener {
+
             alertDialog.dismiss()
             GetBlured.applyBlur(activity, false)
             onCLickNegative?.invoke()
