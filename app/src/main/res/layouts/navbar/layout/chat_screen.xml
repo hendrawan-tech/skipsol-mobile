@@ -15,17 +15,15 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-
-
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:paddingTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingTop="20dp">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/search_lecture"
@@ -56,12 +54,54 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/chat_not_found"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="300dp"
+                        android:layout_height="300dp"
+                        android:src="@drawable/img_data_not_found" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tidak Ditemukan"
+                        android:textAllCaps="true"
+                        android:textAppearance="@style/text_bold_primary"
+                        android:textSize="16sp" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:text="Maaf. Pencarian anda tidak dapat ditemukan.
+Silahkan coba dengan kata kunci lain"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/text_regular_font_primary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/animation_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/loader" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/chat_recycle_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/search_lecture"
                     android:nestedScrollingEnabled="false" />
+
 
             </LinearLayout>
 
