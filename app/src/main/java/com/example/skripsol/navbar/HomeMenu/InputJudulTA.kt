@@ -47,7 +47,16 @@ class InputJudulTA : AppCompatActivity() {
         val btnKirimInputJudulTA: MaterialButton = findViewById(R.id.btn_kirim_input_judul_ta)
 
         btnKirimInputJudulTA.setOnClickListener {
-            Get.dialog(this, "Apakah anda yakin", "Ingin mengirim Judul TA ?")
+            Get.dialog(
+                this, "Apakah anda yakin", "Ingin mengirim Judul TA ?",
+                onClickPositive = {
+
+                },
+                onCLickNegative = {
+
+                },
+
+                )
 
         }
 
@@ -108,11 +117,6 @@ class InputJudulTA : AppCompatActivity() {
         setupDropDownPilihDosenPembimbing(pilihDosenPembimbing2)
         setupDropDownPilihDosenPembimbing(pilihDosenPembimbing3)
     }
-
-
-
-
-
 
 
 }

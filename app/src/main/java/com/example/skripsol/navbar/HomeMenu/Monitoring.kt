@@ -20,6 +20,7 @@ import com.example.skripsol.navbar.HomeMenu.MonitoringAdapter.MonitoringAdapter
 import com.example.skripsol.navbar.HomeMenu.MonitoringAdapter.MonitoringData
 import com.example.skripsol.navbar.HomeMenu.UpdateStatusAdapter.UpdateStatusAdapter
 import com.example.skripsol.navbar.HomeMenu.UpdateStatusAdapter.UpdateStatusData
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.slider.LabelFormatter
 import com.google.android.material.slider.Slider
 import com.google.android.material.textview.MaterialTextView
@@ -52,6 +53,19 @@ class Monitoring : AppCompatActivity() {
 
         findViewById<ImageView>(R.id.btn_back_monitoring).setOnClickListener {
             Get.back(this)
+        }
+
+        findViewById<MaterialButton>(R.id.btn_kirim_monitoring).setOnClickListener {
+            Get.dialog(
+                this, "Apakah anda yakin", "Ingin Update Monitoring ?",
+                onClickPositive = {
+
+                },
+                onCLickNegative = {
+
+                },
+
+                )
         }
 
 
