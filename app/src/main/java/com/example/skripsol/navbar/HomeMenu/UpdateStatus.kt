@@ -52,10 +52,21 @@ class UpdateStatus : AppCompatActivity() {
 
 
       findViewById<ImageView>(R.id.btn_back_update_status).setOnClickListener {
-
             Get.back(this)
+        }
 
 
+        findViewById<MaterialButton>(R.id.btn_kirim_status).setOnClickListener {
+            Get.dialog(
+                this, "Apakah anda yakin", "Ingin Update Status ?",
+                onClickPositive = {
+
+                },
+                onCLickNegative = {
+
+                },
+
+                )
         }
 
 

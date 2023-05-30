@@ -2,6 +2,8 @@ package com.example.skripsol.navbar.HomeMenu
 
 
 
+
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
@@ -10,10 +12,13 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.skripsol.FunctionHelper.Get
 import com.example.skripsol.R
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputLayout
 
 class FormPengajuan : AppCompatActivity() {
 
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.form_pengajuan_screen)
@@ -31,6 +36,19 @@ class FormPengajuan : AppCompatActivity() {
 
         findViewById<ImageView>(R.id.btn_back_form_pengajuan).setOnClickListener {
             Get.back(this)
+        }
+
+        findViewById<MaterialButton>(R.id.btn_kirim_form_pengajuan).setOnClickListener {
+            Get.dialog(
+                this, "Apakah anda yakin", "Ingin mengajukan perubahan Judul TA ?",
+                onClickPositive = {
+
+                },
+                onCLickNegative = {
+
+                },
+
+                )
         }
     }
 
