@@ -1,44 +1,35 @@
 package com.example.skripsol.navbar.HomeMenu
 
 
-import android.app.Activity
+import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
+import android.content.Intent
 import android.os.Bundle
-import android.renderscript.Allocation
-import android.renderscript.Element
-import android.renderscript.RenderScript
-import android.renderscript.ScriptIntrinsicBlur
-import android.view.LayoutInflater
 import android.view.MotionEvent
-import android.view.View
 import android.view.View.OnTouchListener
-import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.graphics.drawable.toDrawable
 import com.example.skripsol.FunctionHelper.Get
 import com.example.skripsol.R
+import com.example.skripsol.auth.Login
+import com.example.skripsol.config.Network
 import com.google.android.material.button.MaterialButton
-
 import com.google.android.material.textfield.TextInputLayout
-import com.google.android.material.textview.MaterialTextView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class InputJudulTA : AppCompatActivity() {
 
+    private val itemList = ArrayList<Map<String, Any>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.input_judul_ta_screen)
-
+        getData()
         val textInputJudulTA: TextInputLayout = findViewById(R.id.InputLayout_input_judul_ta)
         val editTextJudulTA: EditText = findViewById(R.id.EditText_input_judul_ta)
 
@@ -59,18 +50,44 @@ class InputJudulTA : AppCompatActivity() {
                 )
 
         }
-
-
         setupDropDownPilihDosenPembimbing()
-
-//       Scroll Function On Text
         scrollAbleEdittext(editTextAbstrakTA)
         findViewById<ImageView>(R.id.btn_back_input_judul_ta).setOnClickListener {
             Get.back(this)
         }
-
     }
 
+    @SuppressLint("SuspiciousIndentation")
+    fun getData() {
+        val sharedPreference = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val token: String? = sharedPreference.getString("token", null)
+        if (token !== null) {
+            Network.instance.getChats(token, 100).enqueue(object : Callback<Map<String, Any>> {
+                @SuppressLint("WrongViewCast")
+                override fun onResponse(
+                    call: Call<Map<String, Any>>,
+                    response: Response<Map<String, Any>>
+                ) {
+                    val dataResponse = response.body()
+                    if (response.isSuccessful && dataResponse != null) {
+                        val data = dataResponse["data"] as? List<Map<String, Any>>
+                        if (data != null) {
+                            itemList.addAll(data)
+                        }
+                    } else {
+                        Toast.makeText(this@InputJudulTA, "Error fetch data", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<Map<String, Any>>, t: Throwable) {
+                    Toast.makeText(this@InputJudulTA, t.message.toString(), Toast.LENGTH_SHORT).show()
+                }
+            })
+        } else {
+            val intent = Intent(this, Login::class.java)
+            startActivity(intent)
+        }
+    }
 
     private fun scrollAbleEdittext(editText: EditText) {
         editText.setOnTouchListener(OnTouchListener { v, event ->
@@ -104,7 +121,6 @@ class InputJudulTA : AppCompatActivity() {
             AdapterView.OnItemClickListener { adapterView, view, position, id ->
                 val itemSelected = adapterView.getItemAtPosition(position)
                 Toast.makeText(this, "$itemSelected", Toast.LENGTH_SHORT).show()
-
             }
     }
 
