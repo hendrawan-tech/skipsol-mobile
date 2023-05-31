@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View.OnTouchListener
 import android.widget.*
@@ -105,22 +106,29 @@ class InputJudulTA : AppCompatActivity() {
     }
 
     private fun setupDropDownPilihDosenPembimbing(autoCompleteTextView: AutoCompleteTextView) {
-        val items = listOf(
-            "Ery Julev Setiawan", "Aji Seto", "Ratih Ayuninghemi", "Hermawan", "I Gede Wiryawan"
-        )
 
         autoCompleteTextView.setDropDownBackgroundDrawable(
             ResourcesCompat.getDrawable(
                 resources, R.drawable.filter_spinner_dropdown_bg, null
             )
         )
-        val adapter = ArrayAdapter(this, R.layout.input_judul_ta_list_item, items)
+        val adapter = SimpleAdapter(this, itemList, R.layout.input_judul_ta_list_item, arrayOf("name"), intArrayOf(R.id.list_dosen_pembb))
+
+        adapter.setViewBinder { view, _, text ->
+            if (view is TextView) {
+                view.text = text.toString()
+                true
+            } else {
+                false
+            }
+        }
 
         autoCompleteTextView.setAdapter(adapter)
         autoCompleteTextView.onItemClickListener =
-            AdapterView.OnItemClickListener { adapterView, view, position, id ->
-                val itemSelected = adapterView.getItemAtPosition(position)
-                Toast.makeText(this, "$itemSelected", Toast.LENGTH_SHORT).show()
+            AdapterView.OnItemClickListener { parent, view, position, id ->
+                val selectedItem = adapter.getItem(position) as Map<String, Any>
+                val selectedName = selectedItem["name"].toString()
+                autoCompleteTextView.setText(selectedName, false)
             }
     }
 
@@ -132,6 +140,7 @@ class InputJudulTA : AppCompatActivity() {
         setupDropDownPilihDosenPembimbing(pilihDosenPembimbing1)
         setupDropDownPilihDosenPembimbing(pilihDosenPembimbing2)
         setupDropDownPilihDosenPembimbing(pilihDosenPembimbing3)
+        Log.e("asd", pilihDosenPembimbing1.text.toString())
     }
 
 
