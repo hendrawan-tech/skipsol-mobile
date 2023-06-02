@@ -9,7 +9,10 @@ interface Endpoint {
     fun getProfile(@Header("Authorization") token: String): Call<Map<String, Any>>
 
     @GET("user/dosen-pembimbing")
-    fun getChats(@Header("Authorization") token: String, @Query("limit") limit: Int): Call<Map<String, Any>>
+    fun getChats(
+        @Header("Authorization") token: String,
+        @Query("limit") limit: Int
+    ): Call<Map<String, Any>>
 
     @GET("skripsi/history")
     fun getHistoryJudul(@Header("Authorization") token: String): Call<Map<String, Any>>
@@ -21,6 +24,20 @@ interface Endpoint {
     @POST("user/status")
     fun addStatus(
         @Field("name") name: String,
+        @Header("Authorization") token: String
+    ): Call<Map<String, Any>>
+
+    @FormUrlEncoded
+    @POST("skripsi/input-ta")
+    fun addSkripsi(
+        @Field("judul_1") judul1: String,
+        @Field("judul_2") judul2: String,
+        @Field("deskripsi_1") deskripsi1: String,
+        @Field("deskripsi_2") deskripsi2: String,
+        @Field("output_1") output1: String,
+        @Field("output_2") output2: String,
+        @Field("pembimbing_1") pembimbing1: String,
+        @Field("pembimbing_2") pembimbing2: String,
         @Header("Authorization") token: String
     ): Call<Map<String, Any>>
 
