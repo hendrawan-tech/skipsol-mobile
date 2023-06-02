@@ -83,8 +83,8 @@ class Login : AppCompatActivity() {
                             dataResponse?.get("data")?.let { it as? Map<String, Any> }
                                 ?.get("user") as Map<String, Any>
                         );
-                        val intent = Intent(this@Login, HeadFragment::class.java)
-                        startActivity(intent)
+
+                        Get.offAll(this@Login, HeadFragment::class.java)
                     } else {
                         Toast.makeText(
                             this@Login, "Fetch data error",

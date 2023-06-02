@@ -47,4 +47,14 @@ interface Endpoint {
         @Field("email") email: String,
         @Field("password") password: String
     ): Call<Map<String, Any>>
+
+    @FormUrlEncoded
+    @POST("skripsi/monitoring")
+    fun updateProgress(
+        @Field("progress")progress: Int,
+        @Field("deskripsi") deskripsi : String,
+        @Header("Authorization") token: String
+    ):Call<Map<String, Any>>
+
+
 }

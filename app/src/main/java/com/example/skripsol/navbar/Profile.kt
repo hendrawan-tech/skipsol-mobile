@@ -1,6 +1,7 @@
 package com.example.skripsol.navbar
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.example.skripsol.FunctionHelper.Get
 import com.example.skripsol.R
+import com.example.skripsol.auth.Login
 import com.example.skripsol.state.MyState
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
@@ -57,7 +59,12 @@ class Profile : Fragment() {
                 "Ya Keluar",
                 "Batal",
                 onClickPositive = {
-
+                    val sharedPreference =
+                        requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+                    val editor = sharedPreference.edit()
+                    editor.remove("token")
+                    editor.apply()
+                    Get.offAll(context, Login::class.java)
                 },
                 onCLickNegative = {
 

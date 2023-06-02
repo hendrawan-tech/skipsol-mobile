@@ -58,7 +58,6 @@ class Chat : Fragment() {
                 adapter.filter(searchText)
                 if (adapter.itemCount == 0) {
                     notFoundChat.visibility = View.VISIBLE
-
                 } else {
                     notFoundChat.visibility = View.GONE
                 }
