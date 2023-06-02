@@ -64,6 +64,7 @@ interface Endpoint {
         @Field("deskripsi") deskripsi : String,
         @Header("Authorization") token: String
     ):Call<Map<String, Any>>
-
+    @GET("skripsi/monitoring")
+    fun getHistoryMonitoring(@Header("Authorization") token: String): Call<Map<String, Any>>
 
 }
