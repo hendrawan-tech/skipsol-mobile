@@ -6,29 +6,22 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
-import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.util.Log
-import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatButton
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skripsol.FunctionHelper.Get
 import com.example.skripsol.R
+import com.example.skripsol.auth.Login
 import com.example.skripsol.config.Network
 import com.example.skripsol.navbar.HeadFragment
 import com.example.skripsol.navbar.HomeMenu.MonitoringAdapter.MonitoringAdapter
 import com.example.skripsol.navbar.HomeMenu.MonitoringAdapter.MonitoringData
-import com.example.skripsol.navbar.HomeMenu.UpdateStatusAdapter.UpdateStatusAdapter
-import com.example.skripsol.navbar.HomeMenu.UpdateStatusAdapter.UpdateStatusData
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.slider.LabelFormatter
 import com.google.android.material.slider.Slider
 import com.google.android.material.textview.MaterialTextView
 import retrofit2.Call
@@ -39,6 +32,9 @@ class Monitoring : AppCompatActivity() {
 
     private lateinit var MonitoringRecycleView: RecyclerView
     private lateinit var monitoringAdapter: MonitoringAdapter
+
+    private val itemList = ArrayList<Map<String, Any>>()
+    private var statusValue = ""
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,10 +53,10 @@ class Monitoring : AppCompatActivity() {
         sliderToText(progressBarSliderToText,progressBarSlider)
 
         MonitoringRecycleView = findViewById(R.id.recylce_riwayat_monitoring)
-        monitoringAdapter = MonitoringAdapter(generateRandomData())
-
+//        monitoringAdapter = MonitoringAdapter(generateRandomData())
+        getData()
         MonitoringRecycleView.layoutManager = LinearLayoutManager(this)
-        MonitoringRecycleView.adapter = monitoringAdapter
+//        MonitoringRecycleView.adapter = monitoringAdapter
 
 
         findViewById<ImageView>(R.id.btn_back_monitoring).setOnClickListener {
@@ -176,6 +172,41 @@ class Monitoring : AppCompatActivity() {
     private fun sliderToText( intToStringText : MaterialTextView, progressBarSlider : Slider){
         val progressValue = progressBarSlider.value.toInt()
         intToStringText.text = "$progressValue %"
+    }
+
+    private fun getData() {
+        val sharedPreference = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val token: String? = sharedPreference.getString("token", null)
+        if (token !== null) {
+            Network.instance.getHistoryMonitoring(token).enqueue(object : Callback<Map<String, Any>> {
+                @SuppressLint("WrongViewCast")
+                override fun onResponse(
+                    call: Call<Map<String, Any>>, response: Response<Map<String, Any>>
+                ) {
+                    val dataResponse = response.body()
+                    if (response.isSuccessful && dataResponse != null) {
+                        val data = dataResponse["data"] as? List<Map<String, Any>>
+                        Log.e("asd", data.toString())
+                        if (data != null) {
+                            itemList.addAll(data)
+                            monitoringAdapter= MonitoringAdapter(itemList)
+                            MonitoringRecycleView.adapter = monitoringAdapter
+                        }
+                    } else {
+                        Toast.makeText(this@Monitoring, "Error fetch data", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+
+                override fun onFailure(call: Call<Map<String, Any>>, t: Throwable) {
+                    Toast.makeText(this@Monitoring, t.message.toString(), Toast.LENGTH_SHORT)
+                        .show()
+                }
+            })
+        } else {
+            val intent = Intent(this@Monitoring, Login::class.java)
+            startActivity(intent)
+        }
     }
 
 
