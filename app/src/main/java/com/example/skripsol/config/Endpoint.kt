@@ -42,6 +42,15 @@ interface Endpoint {
     ): Call<Map<String, Any>>
 
     @FormUrlEncoded
+    @POST("skripsi/pengajuan")
+    fun addPengjuan(
+        @Field("judul_sebelum") judul_sebelum: String,
+        @Field("judul_sesudah") judul_sesudah: String,
+        @Field("alasan") alasan: String,
+        @Header("Authorization") token: String
+    ): Call<Map<String, Any>>
+
+    @FormUrlEncoded
     @POST("login")
     fun login(
         @Field("email") email: String,
