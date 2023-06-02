@@ -47,6 +47,39 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_below="@id/search_lecture"
+            android:layout_marginTop="50dp"
+            android:id="@+id/riwayat_not_found"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:src="@drawable/img_data_kosong" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KOSONG"
+                android:textAllCaps="true"
+                android:textAppearance="@style/text_bold_primary"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="Tidak ada riwayat judul yang dapat ditampilkan."
+                android:textAlignment="center"
+                android:textAppearance="@style/text_regular_font_primary"
+                android:textSize="12sp" />
+        </LinearLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/history_recycle_view"
             android:layout_width="match_parent"

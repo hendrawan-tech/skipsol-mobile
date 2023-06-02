@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,7 +28,9 @@ class RiwayatJudul : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RiwayatJudulAdapter
     private val itemList = ArrayList<Map<String, Any>>()
+    private lateinit var notFoundRiwayat : LinearLayout
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,7 +41,7 @@ class RiwayatJudul : Fragment() {
 
         val layoutManager = LinearLayoutManager(requireContext())
         recyclerView.layoutManager = layoutManager
-
+        notFoundRiwayat = view.findViewById(R.id.riwayat_not_found)
         getData()
 
         // Atur layout manager dan adapter
@@ -67,6 +70,11 @@ class RiwayatJudul : Fragment() {
                             itemList.addAll(data)
                             adapter = RiwayatJudulAdapter(itemList)
                             recyclerView.adapter = adapter
+                            if (data.isEmpty()) {
+                                notFoundRiwayat.visibility = View.VISIBLE
+                            } else {
+                                notFoundRiwayat.visibility = View.GONE
+                            }
                         }
                     } else {
                         Toast.makeText(requireContext(), "Error fetch data", Toast.LENGTH_SHORT)
