@@ -57,7 +57,7 @@ class InputJudulTA : AppCompatActivity() {
                                 ) {
                                     if (response.isSuccessful) {
                                         Toast.makeText(
-                                            this@InputJudulTA, "Berhasil Update Status", Toast.LENGTH_SHORT
+                                            this@InputJudulTA, "Berhasil Melakukan Input TA", Toast.LENGTH_SHORT
                                         ).show()
                                         val intent = Intent(this@InputJudulTA, HeadFragment::class.java)
                                         startActivity(intent)
