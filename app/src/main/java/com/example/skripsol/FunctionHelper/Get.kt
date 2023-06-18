@@ -7,16 +7,35 @@ import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
-import android.widget.Toast
+
 import androidx.appcompat.app.AlertDialog
 import com.example.skripsol.FunctionHelper.GetMaterial.GetButton
 import com.example.skripsol.R
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textview.MaterialTextView
+import android.graphics.*
+import android.opengl.Visibility
+import android.view.View.*
+import android.view.ViewGroup
 
 
 object Get {
     private val argumentsMap: MutableMap<String, String> = mutableMapOf()
+
+
+    //    Margin Variables
+    const val MBottom = 0
+    const val MTop = 1
+    const val MLeft = 2
+    const val MRight = 3
+    const val MStart = 4
+    const val MEnd = 5
+    const val MAll = 6
+
+    //    Visibilty Variables
+    const val True = 0
+    const val False = 1
+    const val Miss = 2
 
     fun to(activity: Context?, targetActivity: Class<*>, vararg arguments: Pair<String, String>) {
         val intent = Intent(activity, targetActivity)
@@ -106,7 +125,6 @@ object Get {
         textviewSubtitle.text = Subtitle.toString()
 
 
-
         val alertDialog = alertDialogBuilder.create()
 
         alertDialog.setCancelable(false)
@@ -132,7 +150,7 @@ object Get {
         @Required activity: Context?,
         Title: String,
         Subtitle: String,
-        Image : Drawable?,
+        Image: Drawable?,
         positiveButtonText: String?,
         negativeButtonText: String?,
         onClickPositive: (() -> Unit)? = null,
@@ -142,7 +160,7 @@ object Get {
 
         val textViewTitle = dialogView.findViewById<MaterialTextView>(R.id.alertDialogTitle)
         val textviewSubtitle = dialogView.findViewById<MaterialTextView>(R.id.alertDialogSubtitle)
-        val imageView : ImageView =  dialogView.findViewById(R.id.image_dialog)
+        val imageView: ImageView = dialogView.findViewById(R.id.image_dialog)
         val btnPositive: MaterialButton = dialogView.findViewById(R.id.btn_positive_response)
         val btnNegative: MaterialButton = dialogView.findViewById(R.id.btn_negative_response)
         val alertDialogBuilder = AlertDialog.Builder(activity!!).setView(dialogView)
@@ -159,11 +177,13 @@ object Get {
         }
 
         if (!positiveButtonText.isNullOrEmpty()) {
-            btnPositive.text = positiveButtonText// Set teks pada btnPositive jika tidak null atau empty
+            btnPositive.text =
+                positiveButtonText// Set teks pada btnPositive jika tidak null atau empty
         }
 
         if (!negativeButtonText.isNullOrEmpty()) {
-            btnNegative.text = negativeButtonText // Set teks pada btnNegative jika tidak null atau empty
+            btnNegative.text =
+                negativeButtonText // Set teks pada btnNegative jika tidak null atau empty
         }
 
 
@@ -191,10 +211,10 @@ object Get {
         @Required activity: Context?,
         layoutId: Int,
         descriptionID: Int,
-        buttonID:Int,
-        description:String = "",
+        buttonID: Int,
+        description: String = "",
         singleAction: (() -> Unit)? = null,
-    ){
+    ) {
         val dialogView = LayoutInflater.from(activity).inflate(layoutId, null)
 
         val txtDescription = dialogView.findViewById<MaterialTextView>(descriptionID)
@@ -213,8 +233,50 @@ object Get {
         }
     }
 
-    annotation class Required
+    fun toDp(context: Context, dp: Int): Int {
+        val density = context.resources.displayMetrics.density
+        return (dp * density).toInt()
+    }
 
+    fun View.getMargins(
+        marginType: Int,
+        dpMargin: Int
+    ) {
+        val density = resources.displayMetrics.density
+        val pixels = (dpMargin * density).toInt()
+
+        val layoutParams = this.layoutParams as? ViewGroup.MarginLayoutParams
+
+        when (marginType) {
+            MBottom -> layoutParams?.bottomMargin = pixels // Bottom margin
+            MTop -> layoutParams?.topMargin = pixels // Top margin
+            MLeft -> layoutParams?.leftMargin = pixels // Left margin
+            MRight -> layoutParams?.rightMargin = pixels // Right margin
+            MStart -> layoutParams?.marginStart = pixels // Start margin
+            MEnd -> layoutParams?.marginEnd = pixels // End margin
+            MAll -> {
+                layoutParams?.bottomMargin = pixels // Bottom margin
+                layoutParams?.topMargin = pixels // Top margin
+                layoutParams?.leftMargin = pixels // Left margin
+                layoutParams?.rightMargin = pixels // Right margin
+                layoutParams?.marginStart = pixels // Start margin
+                layoutParams?.marginEnd = pixels // End margin
+            }
+        }
+
+        this.layoutParams = layoutParams
+    }
+
+    fun View.viewStatus(viewStatus: Int) {
+        when (viewStatus) {
+            True -> this.visibility = VISIBLE
+            False -> this.visibility = INVISIBLE
+            Miss -> this.visibility = GONE
+        }
+    }
+
+
+    annotation class Required
 
 }
 

@@ -4,25 +4,28 @@ package com.example.skripsol.navbar.HomeMenu
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.media.audiofx.DynamicsProcessing.Mbc
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View.*
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.view.marginBottom
 import com.example.skripsol.FunctionHelper.Get
+import com.example.skripsol.FunctionHelper.Get.MBottom
+import com.example.skripsol.FunctionHelper.Get.MTop
+import com.example.skripsol.FunctionHelper.Get.Miss
+import com.example.skripsol.FunctionHelper.Get.True
+import com.example.skripsol.FunctionHelper.Get.getMargins
+import com.example.skripsol.FunctionHelper.Get.viewStatus
 import com.example.skripsol.R
 import com.example.skripsol.auth.Login
 import com.example.skripsol.config.Network
-import com.example.skripsol.navbar.HeadFragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.textview.MaterialTextView
-import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -71,7 +74,17 @@ class InputJudulTA : AppCompatActivity() {
         var errDosenPembimbing1 = ""
         var errDosenPembimbing2 = ""
 
-//        Input Text
+//        InputLayout TextLayout
+        val inputJudul1 = findViewById<TextInputLayout>(R.id.InputLayout_input_judul_ta)
+        val inputDeskripsi1 = findViewById<TextInputLayout>(R.id.InputLayout_deskripsi_1)
+        val inputOutput1 = findViewById<TextInputLayout>(R.id.InputLayout_output_1)
+        val inputJudul2 = findViewById<TextInputLayout>(R.id.InputLayout_input_judul_ta2)
+        val inputDeskripsi2 = findViewById<TextInputLayout>(R.id.InputLayout_deskripsi_2)
+        val inputOutput2 = findViewById<TextInputLayout>(R.id.InputLayout_output_2)
+        val inputDospem1 = findViewById<TextInputLayout>(R.id.InputLayout_dospem1)
+        val inputDospem2 = findViewById<TextInputLayout>(R.id.InputLayout_dospem2)
+
+//        Input EditText
         val textInputJudulTA1: TextInputEditText = findViewById(R.id.EditText_input_judul_ta)
         val textInputJudulTA2: TextInputEditText = findViewById(R.id.EditText_input_judul_ta2)
         val deskripsi1: EditText = findViewById(R.id.EditText_deskripsi_1)
@@ -94,69 +107,100 @@ class InputJudulTA : AppCompatActivity() {
         if (textInputJudulTA1.text.isNullOrEmpty()) {
             errJudulPertamaTA = "*Judul Pertama TA harus diisi"
             viewTxtJudulPertama.text = errJudulPertamaTA
-            viewTxtJudulPertama.visibility = VISIBLE
+            viewTxtJudulPertama.viewStatus(True)
+            inputJudul1.getMargins(MBottom,0)
+            viewTxtJudulPertama.getMargins(MTop,5)
+            viewTxtJudulPertama.getMargins(MBottom,15)
             validator = false
         } else {
-            viewTxtJudulPertama.visibility = INVISIBLE
+            inputJudul1.getMargins(MBottom,20)
+            viewTxtJudulPertama.viewStatus(Miss)
         }
         if (deskripsi1.text.isNullOrEmpty()) {
             errDeskripsiPertama = "*Deskripsi TA harus diisi"
             viewTxtDeskripsiPertama.text = errDeskripsiPertama
-            viewTxtDeskripsiPertama.visibility = VISIBLE
+            viewTxtDeskripsiPertama.viewStatus(True)
+            inputDeskripsi1.getMargins(MBottom, 0)
+            viewTxtDeskripsiPertama.getMargins(MTop,5)
+            viewTxtDeskripsiPertama.getMargins(MBottom,15)
             validator = false
         } else {
-            viewTxtDeskripsiPertama.visibility = INVISIBLE
+            viewTxtDeskripsiPertama.viewStatus(Miss)
+            inputDeskripsi1.getMargins(MBottom, 20)
         }
         if (output1.text.isNullOrEmpty()) {
             errOutputPertama = "*Output TA harus diisi"
             viewTxtOutputPertama.text = errOutputPertama
-            viewTxtOutputPertama.visibility = VISIBLE
+            viewTxtOutputPertama.viewStatus(True)
+            inputOutput1.getMargins(MBottom,0)
+            viewTxtOutputPertama.getMargins(MTop,5)
+            viewTxtOutputPertama.getMargins(MBottom,15)
             validator = false
         } else {
-            viewTxtOutputPertama.visibility = INVISIBLE
+            viewTxtOutputPertama.viewStatus(Miss)
+            output1.getMargins(MBottom, 20)
         }
         if (textInputJudulTA2.text.isNullOrEmpty()) {
             errJudulKeduaTA = "*Judul Kedua TA harus diisi"
             viewTxtJudulKedua.text = errJudulKeduaTA
-            viewTxtJudulKedua.visibility = VISIBLE
+            viewTxtJudulKedua.viewStatus(True)
+            inputJudul2.getMargins(MBottom,0)
+            viewTxtJudulKedua.getMargins(MTop,5)
+            viewTxtJudulKedua.getMargins(MBottom,15)
             validator = false
         } else {
-            viewTxtJudulKedua.visibility = INVISIBLE
+            viewTxtJudulKedua.viewStatus(Miss)
+            inputJudul2.getMargins(MBottom,20)
         }
         if (deskripsi2.text.isNullOrEmpty()) {
             errDeskripsiKedua = "*Deskripsi kedua TA harus diisi"
             viewTxtDeskripsiKedua.text = errDeskripsiKedua
-            viewTxtDeskripsiKedua.visibility = VISIBLE
+            viewTxtDeskripsiKedua.viewStatus(True)
+            inputDeskripsi2.getMargins(MBottom,0)
+            viewTxtDeskripsiKedua.getMargins(MTop,5)
+            viewTxtDeskripsiKedua.getMargins(MBottom,15)
             validator = false
         } else {
-            viewTxtDeskripsiKedua.visibility = INVISIBLE
+            viewTxtDeskripsiKedua.viewStatus(Miss)
+            inputDeskripsi2.getMargins(MBottom,20)
         }
         if (output2.text.isNullOrEmpty()) {
-            errOutputKedua = "Output kedua TA harus diisi"
+            errOutputKedua = "*Output kedua TA harus diisi"
             viewTxtOutputKedua.text = errOutputKedua
-            viewTxtOutputKedua.visibility = VISIBLE
+            viewTxtOutputKedua.viewStatus(True)
+            inputOutput2.getMargins(MBottom,0)
+            viewTxtOutputKedua.getMargins(MTop,5)
+            viewTxtOutputKedua.getMargins(MBottom,15)
             validator = false
         } else {
-            viewTxtOutputKedua.visibility = INVISIBLE
+            viewTxtOutputKedua.viewStatus(Miss)
+            inputOutput2.getMargins(MBottom,20)
         }
         if (pilihDosenPembimbing1.text.isNullOrEmpty()) {
             errDosenPembimbing1 = "*Harap Pilih dosen Pembimbing 1"
             viewTxtPilihDospem1.text = errDosenPembimbing1
-            viewTxtPilihDospem1.visibility = VISIBLE
+            viewTxtPilihDospem1.viewStatus(True)
+            inputDospem1.getMargins(MBottom,0)
+            viewTxtPilihDospem1.getMargins(MTop,5)
+            viewTxtPilihDospem1.getMargins(MBottom,15)
             validator = false
         } else {
-            viewTxtPilihDospem1.visibility = INVISIBLE
+            viewTxtPilihDospem1.viewStatus(Miss)
+            inputDospem1.getMargins(MBottom,20)
         }
         if (pilihDosenPembimbing2.text.isNullOrEmpty()) {
             errDosenPembimbing2 = "*Harap Pilih dosen Pembimbing 2"
             viewTxtPilihDospem2.text = errDosenPembimbing2
-            viewTxtPilihDospem2.visibility = VISIBLE
+            viewTxtPilihDospem2.viewStatus(True)
+            inputDospem2.getMargins(MBottom,0)
+            viewTxtPilihDospem2.getMargins(MTop,5)
+            viewTxtPilihDospem2.getMargins(MBottom,20)
             validator = false
         } else {
-            viewTxtPilihDospem2.visibility = INVISIBLE
+            viewTxtPilihDospem2.viewStatus(Miss)
+            inputDospem2.getMargins(MBottom,20)
         }
         if (validator) {
-
             Get.dialog(
                 this, "Apakah anda yakin", "Ingin mengirim Judul TA ?",
                 onClickPositive = {
