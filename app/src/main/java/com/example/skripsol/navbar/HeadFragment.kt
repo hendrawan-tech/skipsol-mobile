@@ -7,6 +7,7 @@ import androidx.activity.OnBackPressedDispatcher
 import androidx.fragment.app.Fragment
 import com.example.skripsol.FunctionHelper.Get
 import com.example.skripsol.R
+import com.example.skripsol.config.Network
 import com.example.skripsol.databinding.HeadFragmentBinding
 import nl.joery.animatedbottombar.AnimatedBottomBar
 
@@ -40,7 +41,7 @@ class HeadFragment : AppCompatActivity() {
             override fun handleOnBackPressed() {
                 onWillPopScope()
             }
-            
+
         }
         onBackPressedDispatcher.addCallback(this, callback)
     }
@@ -58,7 +59,7 @@ class HeadFragment : AppCompatActivity() {
             Title = "",
             Subtitle = "Apakah anda yakin akan keluar aplikasi ?",
             onClickPositive = {
-                              finish();
+                finish();
             },
 
             )

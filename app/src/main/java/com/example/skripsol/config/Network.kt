@@ -1,10 +1,12 @@
 package com.example.skripsol.config
 
+
+import com.example.skripsol.BuildConfig
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object Network {
-    private const val BASE_URL = "https://skripsi.kateruriyu.my.id/api/"
+    private const val BASE_URL = BuildConfig.BASE_URL
 
     val instance: Endpoint by lazy {
         val retrofit = Retrofit.Builder()
