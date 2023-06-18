@@ -157,6 +157,13 @@
         <item name="fontFamily">@font/golos_text_extra_bold</item>
     </style>
 
+<!--    Text Font Red Color-->
+    <style name="text_regular_red">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/red_colorButton</item>
+        <item name="fontFamily">@font/golos_text_regular</item>
+    </style>
+
     <style name="TextInputLayoutCircular">
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.TextInputLayout.Circle</item>
     </style>

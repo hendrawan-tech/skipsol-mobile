@@ -55,8 +55,6 @@
             android:textColor="@color/white_color"
             android:textSize="14sp"
             android:fontFamily="@font/golos_text_semi_bold"/>
-
-
     </LinearLayout>
 
 </LinearLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/rounded_alert_dialog"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:src="@drawable/img_dialog_success"
+        android:layout_marginBottom="15dp"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/successDialogTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Aktivitas berhasil dilakukan !"
+        android:textAppearance="@style/text_regular_primary"
+        android:textSize="16sp"
+        android:layout_marginBottom="15dp"/>
+
+    <com.example.skripsol.FunctionHelper.GetMaterial.GetButton
+        android:id="@+id/successDialogButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cornerRadius="12dp"
+        app:strokeColor="@color/primary_color"
+        android:text="ok"/>
+</LinearLayout>

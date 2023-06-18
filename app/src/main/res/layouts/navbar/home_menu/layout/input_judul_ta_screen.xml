@@ -4,10 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:background="@color/white_color"
     tools:context=".navbar.HomeMenu.InputJudulTA">
-
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -67,7 +65,6 @@
                     android:id="@+id/InputLayout_input_judul_ta"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
                     android:background="@drawable/text_field_round_border"
                     app:boxBackgroundMode="none"
                     app:hintEnabled="false">
@@ -85,6 +82,16 @@
                         android:textSize="12sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/errJudulPertama"
+                    android:visibility="invisible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:textAppearance="@style/text_regular_red"
+                    android:layout_marginTop="5dp"
+                    android:text="*Harap isi kolom teks yang kosong"
+                    />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
@@ -97,7 +104,6 @@
                     android:id="@+id/InputLayout_deskripsi_1"
                     android:layout_width="match_parent"
                     android:layout_height="118dp"
-                    android:layout_marginBottom="20dp"
                     android:background="@drawable/text_field_round_border"
                     app:boxBackgroundMode="none"
                     app:hintEnabled="false">
@@ -118,19 +124,29 @@
                         android:textColorHint="@color/font_secondary_variant"
                         android:textSize="12sp" />
                 </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/errDeskripsiPertama"
+                    android:visibility="invisible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:textAppearance="@style/text_regular_red"
+                    android:layout_marginTop="5dp"
+                    android:text="*Harap isi kolom teks yang kosong"
+                    />
+
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="Output Kedua"
+                    android:text="Output Pertama"
                     android:textAppearance="@style/text_semi_bold_font_primary" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/InputLayout_output_1"
                     android:layout_width="match_parent"
                     android:layout_height="118dp"
-                    android:layout_marginBottom="20dp"
                     android:background="@drawable/text_field_round_border"
                     app:boxBackgroundMode="none"
                     app:hintEnabled="false">
@@ -151,6 +167,16 @@
                         android:textColorHint="@color/font_secondary_variant"
                         android:textSize="12sp" />
                 </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/errOutputPertama"
+                    android:visibility="invisible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:textAppearance="@style/text_regular_red"
+                    android:layout_marginTop="5dp"
+                    android:text="*Harap isi kolom teks yang kosong"
+                    />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
@@ -163,7 +189,6 @@
                     android:id="@+id/InputLayout_input_judul_ta2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
                     android:background="@drawable/text_field_round_border"
                     app:boxBackgroundMode="none"
                     app:hintEnabled="false">
@@ -181,6 +206,16 @@
                         android:textSize="12sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/errJudulKedua"
+                    android:visibility="invisible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:textAppearance="@style/text_regular_red"
+                    android:layout_marginTop="5dp"
+                    android:text="*Harap isi kolom teks yang kosong"
+                    />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
@@ -193,7 +228,6 @@
                     android:id="@+id/InputLayout_deskripsi_2"
                     android:layout_width="match_parent"
                     android:layout_height="118dp"
-                    android:layout_marginBottom="20dp"
                     android:background="@drawable/text_field_round_border"
                     app:boxBackgroundMode="none"
                     app:hintEnabled="false">
@@ -214,6 +248,16 @@
                         android:textColorHint="@color/font_secondary_variant"
                         android:textSize="12sp" />
                 </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/errDeskripsiKedua"
+                    android:visibility="invisible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:textAppearance="@style/text_regular_red"
+                    android:layout_marginTop="5dp"
+                    android:text="*Harap isi kolom teks yang kosong"
+                    />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
@@ -226,7 +270,6 @@
                     android:id="@+id/InputLayout_output_2"
                     android:layout_width="match_parent"
                     android:layout_height="118dp"
-                    android:layout_marginBottom="20dp"
                     android:background="@drawable/text_field_round_border"
                     app:boxBackgroundMode="none"
                     app:hintEnabled="false">
@@ -247,6 +290,16 @@
                         android:textColorHint="@color/font_secondary_variant"
                         android:textSize="12sp" />
                 </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/errOutputKedua"
+                    android:visibility="invisible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:textAppearance="@style/text_regular_red"
+                    android:layout_marginTop="5dp"
+                    android:text="*Harap isi kolom teks yang kosong"
+                    />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
@@ -263,7 +316,6 @@
                         app:boxCornerRadiusTopEnd="12dp"
                         app:boxCornerRadiusBottomStart="12dp"
                         app:boxCornerRadiusBottomEnd="12dp"
-                        android:layout_marginBottom="15dp"
                         app:endIconDrawable="@drawable/arrow_pilih_dosen"
                         app:endIconTint="@color/black"
                         app:hintTextAppearance="@style/text_regular_font_primary"
@@ -284,8 +336,16 @@
                             android:textColorHint="@color/font_primary_color" />
 
                     </com.google.android.material.textfield.TextInputLayout>
-
-
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/errPilihDosenPembimbing1"
+                    android:visibility="invisible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:textAppearance="@style/text_regular_red"
+                    android:layout_marginTop="5dp"
+                    android:text="*Harap isi kolom teks yang kosong"
+                    />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
@@ -302,7 +362,6 @@
                     app:boxCornerRadiusTopEnd="12dp"
                     app:boxCornerRadiusBottomStart="12dp"
                     app:boxCornerRadiusBottomEnd="12dp"
-                    android:layout_marginBottom="15dp"
                     app:endIconDrawable="@drawable/arrow_pilih_dosen"
                     app:endIconTint="@color/black"
                     app:hintTextAppearance="@style/text_regular_font_primary"
@@ -323,6 +382,16 @@
                         android:textColorHint="@color/font_primary_color" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/errPilihDosenPembimbing2"
+                    android:visibility="invisible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:textAppearance="@style/text_regular_red"
+                    android:layout_marginTop="5dp"
+                    android:text="*Harap isi kolom teks yang kosong"
+                    />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_kirim_input_judul_ta"

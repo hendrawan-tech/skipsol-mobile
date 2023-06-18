@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.example.skripsol.FunctionHelper.GetMaterial.GetButton
 import com.example.skripsol.R
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textview.MaterialTextView
@@ -108,7 +109,7 @@ object Get {
 
         val alertDialog = alertDialogBuilder.create()
 
-
+        alertDialog.setCancelable(false)
         alertDialog.show()
         GetBlured.applyBlur(activity, true)
         btnPositive.setOnClickListener {
@@ -167,7 +168,7 @@ object Get {
 
 
         val alertDialog = alertDialogBuilder.create()
-
+        alertDialog.setCancelable(false);
 
         alertDialog.show()
         GetBlured.applyBlur(activity, true)
@@ -183,6 +184,32 @@ object Get {
             alertDialog.dismiss()
             GetBlured.applyBlur(activity, false)
             onCLickNegative?.invoke()
+        }
+    }
+
+    fun dialogSingle(
+        @Required activity: Context?,
+        layoutId: Int,
+        descriptionID: Int,
+        buttonID:Int,
+        description:String = "",
+        singleAction: (() -> Unit)? = null,
+    ){
+        val dialogView = LayoutInflater.from(activity).inflate(layoutId, null)
+
+        val txtDescription = dialogView.findViewById<MaterialTextView>(descriptionID)
+        txtDescription.text = description
+
+        val alertDialogBuilder = AlertDialog.Builder(activity!!).setView(dialogView)
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.setCancelable(false)
+        alertDialog.show()
+        GetBlured.applyBlur(activity, true)
+
+        dialogView.findViewById<GetButton>(buttonID).setOnClickListener {
+            alertDialog.dismiss()
+            GetBlured.applyBlur(activity, false)
+            singleAction?.invoke()
         }
     }
 

@@ -74,9 +74,7 @@ class FormPengajuan : AppCompatActivity() {
                                             "Berhasil Melakukan Pengajuan",
                                             Toast.LENGTH_SHORT
                                         ).show()
-                                        val intent =
-                                            Intent(this@FormPengajuan, HeadFragment::class.java)
-                                        startActivity(intent)
+                                        Get.back(this@FormPengajuan)
                                     } else {
                                         Toast.makeText(
                                             this@FormPengajuan,
@@ -101,13 +99,10 @@ class FormPengajuan : AppCompatActivity() {
                         startActivity(intent)
                     }
                 },
-                onCLickNegative = {
-
-                },
-
                 )
         }
     }
+
 
     private fun scrollAbleEdittext(editText: EditText) {
         editText.setOnTouchListener(View.OnTouchListener { v, event ->
@@ -123,4 +118,6 @@ class FormPengajuan : AppCompatActivity() {
             false
         })
     }
+
+
 }
