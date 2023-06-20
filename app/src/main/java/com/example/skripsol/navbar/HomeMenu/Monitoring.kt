@@ -3,7 +3,6 @@ package com.example.skripsol.navbar.HomeMenu
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
@@ -15,55 +14,143 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skripsol.FunctionHelper.Get
+import com.example.skripsol.FunctionHelper.Get.MBottom
+import com.example.skripsol.FunctionHelper.Get.MTop
+import com.example.skripsol.FunctionHelper.Get.Miss
+import com.example.skripsol.FunctionHelper.Get.True
+import com.example.skripsol.FunctionHelper.Get.getMargins
+import com.example.skripsol.FunctionHelper.Get.viewStatus
 import com.example.skripsol.R
 import com.example.skripsol.auth.Login
 import com.example.skripsol.config.Network
-import com.example.skripsol.navbar.HeadFragment
 import com.example.skripsol.navbar.HomeMenu.MonitoringAdapter.MonitoringAdapter
-import com.example.skripsol.navbar.HomeMenu.MonitoringAdapter.MonitoringData
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.slider.Slider
+import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.textview.MaterialTextView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 class Monitoring : AppCompatActivity() {
 
     private lateinit var MonitoringRecycleView: RecyclerView
     private lateinit var monitoringAdapter: MonitoringAdapter
+    private lateinit var progressBarSlider: Slider
+    private lateinit var progressBarSliderToText : MaterialTextView
+
+
 
     private val itemList = ArrayList<Map<String, Any>>()
-    private var statusValue = ""
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.monitoring_screen)
 
-        val progressBarSlider = findViewById<Slider>(R.id.monitoring_progress_slider)
+        progressBarSlider = findViewById(R.id.monitoring_progress_slider)
         setGradientColorOnSlider(progressBarSlider)
-        val editTextDeskripsiProgress : EditText = findViewById(R.id.EditText_deskripsi_monitoring)
+        val editTextDeskripsiProgress: EditText = findViewById(R.id.EditText_deskripsi_monitoring)
 
-        val progressBarSliderToText = findViewById<MaterialTextView>(R.id.monitoring_progress_slider_to_text)
-        val btnKirimMonitoring : MaterialButton = findViewById(R.id.btn_kirim_monitoring)
+        progressBarSliderToText = findViewById(R.id.monitoring_progress_slider_to_text)
+        val btnKirimMonitoring: MaterialButton = findViewById(R.id.btn_kirim_monitoring)
         progressBarSlider.addOnChangeListener { _, value, _ ->
-            sliderToText(progressBarSliderToText,progressBarSlider)
+            sliderToText(progressBarSliderToText, progressBarSlider)
         }
 
-        sliderToText(progressBarSliderToText,progressBarSlider)
+        sliderToText(progressBarSliderToText, progressBarSlider)
 
         MonitoringRecycleView = findViewById(R.id.recylce_riwayat_monitoring)
-//        monitoringAdapter = MonitoringAdapter(generateRandomData())
-        getData()
+        monitoringAdapter = MonitoringAdapter(itemList)
+        getData() // Fetch monitoring data
         MonitoringRecycleView.layoutManager = LinearLayoutManager(this)
-//        MonitoringRecycleView.adapter = monitoringAdapter
-
+        MonitoringRecycleView.adapter = monitoringAdapter // Set adapter to RecyclerView
 
         findViewById<ImageView>(R.id.btn_back_monitoring).setOnClickListener {
             Get.back(this)
         }
 
         btnKirimMonitoring.setOnClickListener {
+            onSubmitMonitoring()
+        }
+    }
+
+    private fun getData() {
+        val sharedPreference = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val token: String? = sharedPreference.getString("token", null)
+        if (token !== null) {
+            Network.instance.getHistoryMonitoring(token).enqueue(object : Callback<Map<String, Any>> {
+                @SuppressLint("WrongViewCast")
+                override fun onResponse(
+                    call: Call<Map<String, Any>>, response: Response<Map<String, Any>>
+                ) {
+                    val dataResponse = response.body()
+
+                    if (response.isSuccessful && dataResponse != null) {
+                        val data = dataResponse["data"] as? List<Map<String, Any>>
+                        Log.e("Terjadi Kesalahan", data.toString())
+                        if (data != null) {
+                            itemList.addAll(data)
+                            monitoringAdapter= MonitoringAdapter(itemList)
+                            MonitoringRecycleView.adapter = monitoringAdapter
+                        }
+                    } else {
+                        Toast.makeText(this@Monitoring, "Error fetch data", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+
+                override fun onFailure(call: Call<Map<String, Any>>, t: Throwable) {
+                    Toast.makeText(this@Monitoring, t.message.toString(), Toast.LENGTH_SHORT)
+                        .show()
+                }
+            })
+        } else {
+            Get.offAll(this@Monitoring, Login::class.java)
+        }
+    }
+    private fun sliderToText( intToStringText : MaterialTextView, progressBarSlider : Slider){
+        val progressValue = progressBarSlider.value.toInt()
+        intToStringText.text = "$progressValue %"
+    }
+    private fun onSubmitMonitoring(){
+
+        var validator = true
+//        Err TextView
+        val errProgress = findViewById<MaterialTextView>(R.id.errProgressbar)
+        val errDeskripsiMonitoring = findViewById<MaterialTextView>(R.id.errDeskripsiMonitoring)
+
+//        Validation Text
+        val progressBarSlider = findViewById<Slider>(R.id.monitoring_progress_slider)
+        val editTextDeskripsiProgress : EditText = findViewById(R.id.EditText_deskripsi_monitoring)
+
+//        Layout
+        val inputlayoutDeskripsi = findViewById<TextInputLayout>(R.id.InputLayout_deskripsi_monitoring)
+
+        if (progressBarSlider.value.toInt() == 0){
+            errProgress.text = "*Progress tidak boleh 0 %"
+            errProgress.viewStatus(True)
+            errProgress.getMargins(MTop, 5)
+            errProgress.getMargins(MBottom, 20)
+            validator = false
+        }else {
+            errProgress.viewStatus(Miss)
+        }
+
+        if (editTextDeskripsiProgress.text.isNullOrEmpty()){
+            errDeskripsiMonitoring.text = "*Deskripsi monitoring harus diisi"
+            errDeskripsiMonitoring.viewStatus(True)
+            inputlayoutDeskripsi.getMargins(MBottom, 0)
+            errDeskripsiMonitoring.getMargins(MTop, 5)
+            errDeskripsiMonitoring.getMargins(MBottom,15)
+            validator = false
+        }else{
+            inputlayoutDeskripsi.getMargins(MBottom,15)
+            errDeskripsiMonitoring.viewStatus(Miss)
+        }
+        if (validator){
             Get.dialog(
                 this, "Apakah anda yakin", "Ingin Update Monitoring ?",
                 onClickPositive = {
@@ -77,79 +164,54 @@ class Monitoring : AppCompatActivity() {
                                     call: Call<Map<String, Any>>, response: Response<Map<String, Any>>
                                 ) {
                                     if (response.isSuccessful) {
+                                        Get.dialogSingle(
+                                            this@Monitoring,
+                                            R.layout.success_dialog,
+                                            R.id.successDialogTxt,
+                                            R.id.successDialogButton,
+                                            "Berhasil input Monitoring !",
+                                            singleAction = {
+                                                Get.back(this@Monitoring)
+                                            }
+                                        )
                                         Toast.makeText(
-                                            this@Monitoring, "Berhasil Update Status", Toast.LENGTH_SHORT
+                                            this@Monitoring, "Berhasil Update Monitoring", Toast.LENGTH_SHORT
                                         ).show()
-                                        Get.offAll(this@Monitoring, HeadFragment::class.java)
+
                                     } else {
+                                        Get.dialogSingle(
+                                            this@Monitoring,
+                                            R.layout.failed_dialog,
+                                            R.id.failedDialogTxt,
+                                            R.id.failedDialogButton,
+                                            "Gagal input Input Monitoring",
+                                            singleAction = {
+                                                Get.back(this@Monitoring)
+                                            }
+                                        )
                                         Toast.makeText(
-                                            this@Monitoring, "Fetch data error", Toast.LENGTH_SHORT
+                                            this@Monitoring, "Terjadi Kesalahan", Toast.LENGTH_SHORT
                                         ).show()
+
                                     }
                                 }
 
                                 override fun onFailure(call: Call<Map<String, Any>>, t: Throwable) {
                                     Toast.makeText(this@Monitoring, t.message.toString(), Toast.LENGTH_SHORT)
                                         .show()
-                                    Log.e("asd", t.message.toString())
+                                    Log.e("Terjadi Kesalahan", t.message.toString())
                                 }
                             })
 
                     }
                 },
-                onCLickNegative = {
-
-                },
-
-                )
-        }
-
-
-
-
-    }
-
-    private fun postProgress(progress: Int, deskripsi:String) {
-
-    }
-    private fun generateRandomData(): List<MonitoringData> {
-
-
-        val randomData = mutableListOf<MonitoringData>()
-
-        repeat(10) {
-            val broadcastTitle = arrayOf(
-                "Pertemuan Awal: Diskusi mengenai topik skripsi",
-                "Pertemuan Literatur: Riset literatur terkait skripsi",
-                "Pertemuan Metodologi: Pembahasan metodologi penelitian",
-                "Pertemuan Analisis: Analisis data skripsi",
-                "Pertemuan Penulisan: Penulisan bab-bab skripsi",
-                "Pertemuan Evaluasi: Evaluasi hasil penelitian",
-                "Pertemuan Presentasi: Persiapan presentasi skripsi",
-                "Pertemuan Revisi: Revisi skripsi berdasarkan masukan dosen",
-                "Pertemuan Final: Persiapan sidang skripsi",
-                "Pertemuan Sidang: Melakukan sidang skripsi"
-                // Tambahkan judul pertemuan lainnya sesuai dengan kebutuhan
-            ).random()
-
-            val hari = (1..31).random()
-            val bulan = (1..12).random()
-            val tahun = (2018..2023).random()
-            val tanggal = "$hari- $bulan - $tahun"
-
-
-            randomData.add(
-                MonitoringData(
-                    R.drawable.img_list_riwayat_monitoring,
-                    broadcastTitle,
-                    tanggal,
-                )
             )
         }
-        return randomData
+
 
 
     }
+
 
    private fun setGradientColorOnSlider(slider: Slider){
         val startColor = Color.parseColor("#FF246BFD")
@@ -168,50 +230,4 @@ class Monitoring : AppCompatActivity() {
         // Mengatur thumb color menjadi transparan
         slider.thumbTintList = ColorStateList.valueOf(Color.TRANSPARENT)
     }
-
-    private fun sliderToText( intToStringText : MaterialTextView, progressBarSlider : Slider){
-        val progressValue = progressBarSlider.value.toInt()
-        intToStringText.text = "$progressValue %"
-    }
-
-    private fun getData() {
-        val sharedPreference = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-        val token: String? = sharedPreference.getString("token", null)
-        if (token !== null) {
-            Network.instance.getHistoryMonitoring(token).enqueue(object : Callback<Map<String, Any>> {
-                @SuppressLint("WrongViewCast")
-                override fun onResponse(
-                    call: Call<Map<String, Any>>, response: Response<Map<String, Any>>
-                ) {
-                    val dataResponse = response.body()
-                    if (response.isSuccessful && dataResponse != null) {
-                        val data = dataResponse["data"] as? List<Map<String, Any>>
-                        Log.e("asd", data.toString())
-                        if (data != null) {
-                            itemList.addAll(data)
-                            monitoringAdapter= MonitoringAdapter(itemList)
-                            MonitoringRecycleView.adapter = monitoringAdapter
-                        }
-                    } else {
-                        Toast.makeText(this@Monitoring, "Error fetch data", Toast.LENGTH_SHORT)
-                            .show()
-                    }
-                }
-
-                override fun onFailure(call: Call<Map<String, Any>>, t: Throwable) {
-                    Toast.makeText(this@Monitoring, t.message.toString(), Toast.LENGTH_SHORT)
-                        .show()
-                }
-            })
-        } else {
-            val intent = Intent(this@Monitoring, Login::class.java)
-            startActivity(intent)
-        }
-    }
-
-
-
-
-
-
 }

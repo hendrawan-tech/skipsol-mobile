@@ -19,7 +19,7 @@ class UpdateStatusAdapter(private var itemList: List<Map<String, Any>>) : Recycl
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = itemList[position]
+        val item = itemList[itemList.size - 1 - position]
         holder.UpdateStatusImage.setImageResource(R.drawable.img_model_profile)
         holder.UpdateStatusTitle.text= item["name"].toString()
         holder.UpdateStatusDate.text = item["created_at"].toString()
@@ -28,8 +28,6 @@ class UpdateStatusAdapter(private var itemList: List<Map<String, Any>>) : Recycl
         }else{
             holder.UpdateStatusVerified.visibility = View.INVISIBLE
         }
-
-
 
     }
 

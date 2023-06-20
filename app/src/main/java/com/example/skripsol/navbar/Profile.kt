@@ -66,9 +66,6 @@ class Profile : Fragment() {
                     editor.apply()
                     Get.offAll(context, Login::class.java)
                 },
-                onCLickNegative = {
-
-                },
             )
         }
 

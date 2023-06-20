@@ -10,7 +10,6 @@ import com.example.skripsol.FunctionHelper.Get
 import com.example.skripsol.R
 import com.example.skripsol.navbar.HomeMenu.BroadcastAdapter.BroadcastAdapter
 import com.example.skripsol.navbar.HomeMenu.BroadcastAdapter.BroadcastData
-import com.example.skripsol.navbar.HomeMenu.UpdateStatusAdapter.UpdateStatusAdapter
 
 class Broadcast : AppCompatActivity() {
 

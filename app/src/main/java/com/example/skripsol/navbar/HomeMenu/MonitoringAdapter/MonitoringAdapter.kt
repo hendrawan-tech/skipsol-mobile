@@ -10,18 +10,18 @@ import de.hdodenhof.circleimageview.CircleImageView
 
 class MonitoringAdapter(private val itemList: ArrayList<Map<String, Any>>) : RecyclerView.Adapter<MonitoringAdapter.ViewHolder>() {
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recycle_monitoring_screen, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = itemList[position]
+        val item = itemList[itemList.size - 1 - position]
 
         holder.montoringImage.setImageResource(R.drawable.img_model_profile)
         holder.monitoringTitle.text= item["deskripsi"].toString()
-        holder.monitoringDate.text = item["created_at"].toString()
-
+        holder.monitoringDate.text = item["progress"].toString() + " %"
 
     }
 

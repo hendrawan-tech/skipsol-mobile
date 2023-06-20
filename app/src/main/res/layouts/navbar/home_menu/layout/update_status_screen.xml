@@ -55,7 +55,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
                     android:layout_marginLeft="12dp"
                     android:layout_marginRight="12dp"
                     android:orientation="vertical">
@@ -75,6 +74,15 @@
                         app:icon="@drawable/icon_arrow_up"
                         app:iconGravity="end"
                         app:strokeColor="@color/primary_color" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/errUpdateStats"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/text_regular_red"
+                        android:text="*Harap isi kolom teks yang kosong"
+                        />
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/card_view"

@@ -3,8 +3,6 @@ package com.example.skripsol.navbar.HomeMenu
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
-import android.media.audiofx.DynamicsProcessing.Mbc
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
@@ -231,13 +229,16 @@ class InputJudulTA : AppCompatActivity() {
                                             R.id.successDialogTxt,
                                             R.id.successDialogButton,
                                             "Berhasil input judul TA !",
+                                            singleAction = {
+                                                Get.back(this@InputJudulTA)
+                                            }
                                         )
                                         Toast.makeText(
                                             this@InputJudulTA,
                                             "Berhasil input judul TA!",
                                             Toast.LENGTH_SHORT
                                         ).show()
-                                        Get.back(this@InputJudulTA)
+
                                     } else {
                                         Get.dialogSingle(
                                             this@InputJudulTA,
@@ -245,13 +246,16 @@ class InputJudulTA : AppCompatActivity() {
                                             R.id.failedDialogTxt,
                                             R.id.failedDialogButton,
                                             "Gagal input judul TA",
+                                            singleAction = {
+                                                Get.back(this@InputJudulTA)
+                                            }
                                         )
                                         Toast.makeText(
                                             this@InputJudulTA,
                                             "Gagal input judul TA",
                                             Toast.LENGTH_SHORT
                                         ).show()
-                                        Get.back(this@InputJudulTA)
+
                                     }
                                 }
 
@@ -308,8 +312,7 @@ class InputJudulTA : AppCompatActivity() {
                 }
             })
         } else {
-            val intent = Intent(this, Login::class.java)
-            startActivity(intent)
+            Get.offAll(this@InputJudulTA, Login::class.java)
         }
     }
 

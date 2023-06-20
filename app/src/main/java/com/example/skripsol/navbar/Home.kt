@@ -1,7 +1,6 @@
 package com.example.skripsol.navbar
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -54,38 +53,26 @@ class Home : Fragment() {
 
 
         view.findViewById<CardView>(R.id.btn_input_judul_ta).setOnClickListener {
-//            val intent = Intent(context, InputJudulTA::class.java)
-//            startActivity(intent)
             Get.to(context, InputJudulTA::class.java)
 
         }
         view.findViewById<CardView>(R.id.btn_monitoring).setOnClickListener {
-//            val intent = Intent(context, Monitoring::class.java)
-//            startActivity(intent)
             Get.to(context,Monitoring::class.java)
 
         }
         view.findViewById<CardView>(R.id.btn_form_pengajuan).setOnClickListener {
-//            val intent = Intent(context, FormPengajuan::class.java)
-//            startActivity(intent)
             Get.to(context, FormPengajuan::class.java)
 
         }
         view.findViewById<CardView>(R.id.btn_update_status).setOnClickListener {
-//            val intent = Intent(context, UpdateStatus::class.java)
-//            startActivity(intent)
             Get.to(context,UpdateStatus::class.java)
         }
 
         view.findViewById<ImageView>(R.id.btn_notifikasi).setOnClickListener {
-//            val intent = Intent(context, Broadcast::class.java)
-//            startActivity(intent)
             Get.to(context, Broadcast::class.java)
         }
 
         view.findViewById<TextView>(R.id.btn_lihat_semua_notifikasi).setOnClickListener {
-//            val intent = Intent(context, Broadcast::class.java)
-//            startActivity(intent)
             Get.to(context,Broadcast::class.java)
         }
 

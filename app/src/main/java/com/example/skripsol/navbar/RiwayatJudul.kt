@@ -3,23 +3,20 @@ package com.example.skripsol.navbar
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.skripsol.FunctionHelper.Get
 import com.example.skripsol.R
 import com.example.skripsol.auth.Login
 import com.example.skripsol.config.Network
-import com.example.skripsol.navbar.ChatAdapter.ChatAdapter
 import com.example.skripsol.navbar.RiwayatJudulAdapter.RiwayatJudulAdapter
-import com.example.skripsol.navbar.RiwayatJudulAdapter.RiwayatJudulData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -88,8 +85,7 @@ class RiwayatJudul : Fragment() {
                 }
             })
         } else {
-            val intent = Intent(requireContext(), Login::class.java)
-            startActivity(intent)
+            Get.offAll(context, Login::class.java)
         }
     }
 }

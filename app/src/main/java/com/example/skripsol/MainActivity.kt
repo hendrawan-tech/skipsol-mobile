@@ -2,9 +2,7 @@ package com.example.skripsol
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.skripsol.FunctionHelper.Get
@@ -15,7 +13,6 @@ import com.example.skripsol.state.MyState
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -33,31 +30,28 @@ class MainActivity : AppCompatActivity() {
         if (token !== null) {
             Network.instance.getProfile(token).enqueue(object : Callback<Map<String, Any>> {
                 @SuppressLint("WrongViewCast")
-                override fun onResponse(call: Call<Map<String, Any>>, response: Response<Map<String, Any>>) {
+                override fun onResponse(
+                    call: Call<Map<String, Any>>,
+                    response: Response<Map<String, Any>>
+                ) {
                     val dataResponse = response.body()
                     if (response.isSuccessful) {
-                        MyState.setDataUser(dataResponse?.get("data")?.let { it as? Map<*, *> }?.get("user") as Map<String, Any>);
-                        val intent = Intent(this@MainActivity, HeadFragment::class.java)
-                        startActivity(intent)
-                        finish()
+                        MyState.setDataUser(dataResponse?.get("data")?.let { it as? Map<*, *> }
+                            ?.get("user") as Map<String, Any>);
                         Get.offAll(this@MainActivity, HeadFragment::class.java)
                     } else {
-                        val intent = Intent(this@MainActivity, Login::class.java)
-                        startActivity(intent)
-                        finish()
                         Get.offAll(this@MainActivity, Login::class.java)
                     }
                 }
 
                 override fun onFailure(call: Call<Map<String, Any>>, t: Throwable) {
-                    Toast.makeText(this@MainActivity, t.message.toString(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@MainActivity, t.message.toString(), Toast.LENGTH_SHORT)
+                        .show()
                 }
             })
         } else {
-            val intent = Intent(this, Login::class.java)
-            startActivity(intent)
-            finish()
             Get.offAll(this, Login::class.java)
         }
     }
+
 }

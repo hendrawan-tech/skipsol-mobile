@@ -5,8 +5,6 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
-import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -14,19 +12,20 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skripsol.FunctionHelper.Get
+import com.example.skripsol.FunctionHelper.Get.MBottom
+import com.example.skripsol.FunctionHelper.Get.MTop
+import com.example.skripsol.FunctionHelper.Get.Miss
+import com.example.skripsol.FunctionHelper.Get.True
+import com.example.skripsol.FunctionHelper.Get.getMargins
+import com.example.skripsol.FunctionHelper.Get.viewStatus
 import com.example.skripsol.R
 import com.example.skripsol.auth.Login
 import com.example.skripsol.config.Network
-import com.example.skripsol.navbar.HeadFragment
 import com.example.skripsol.navbar.HomeMenu.UpdateStatusAdapter.UpdateStatusAdapter
-import com.example.skripsol.navbar.HomeMenu.UpdateStatusAdapter.UpdateStatusData
-import com.example.skripsol.navbar.RiwayatJudulAdapter.RiwayatJudulAdapter
-import com.example.skripsol.state.MyState
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textview.MaterialTextView
@@ -75,16 +74,7 @@ class UpdateStatus : AppCompatActivity() {
 
 
         findViewById<MaterialButton>(R.id.btn_kirim_status).setOnClickListener {
-            Get.dialog(
-                this, "Apakah anda yakin", "Ingin Update Status ?",
-                onClickPositive = {
-                    submit()
-                },
-                onCLickNegative = {
-
-                },
-
-                )
+            submit()
         }
 
         ButtonUpdateStatus.setOnClickListener {
@@ -148,39 +138,95 @@ class UpdateStatus : AppCompatActivity() {
 
     }
 
-    private fun submit() {
-        val sharedPreference = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-        val token: String? = sharedPreference.getString("token", null)
-        if (token !== null) {
-            Network.instance.addStatus(statusValue, token)
-                .enqueue(object : Callback<Map<String, Any>> {
-                    @SuppressLint("WrongViewCast")
-                    override fun onResponse(
-                        call: Call<Map<String, Any>>, response: Response<Map<String, Any>>
-                    ) {
-                        if (response.isSuccessful) {
-                            Toast.makeText(
-                                this@UpdateStatus, "Berhasil Update Status", Toast.LENGTH_SHORT
-                            ).show()
-                            itemList.clear()
-                            getData()
-                        } else {
-                            Toast.makeText(
-                                this@UpdateStatus, "Fetch data error", Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
+    private fun onSubmit() {
+    }
 
-                    override fun onFailure(call: Call<Map<String, Any>>, t: Throwable) {
-                        Toast.makeText(this@UpdateStatus, t.message.toString(), Toast.LENGTH_SHORT)
-                            .show()
-                                Log.e("asd", t.message.toString())
-                    }
-                })
+    private fun submit() {
+
+        var validator = true
+        val buttonUpdateStatus = findViewById<MaterialButton>(R.id.button_update_status)
+        val btnKirim = findViewById<MaterialButton>(R.id.btn_kirim_status)
+        var errUpdateStatus = findViewById<MaterialTextView>(R.id.errUpdateStats)
+        if (buttonUpdateStatus.text.equals("Update Status")) {
+            errUpdateStatus.text = "*Harap pilih status untuk di Update"
+            buttonUpdateStatus.getMargins(MBottom, 5)
+            btnKirim.getMargins(MTop, 12)
+            errUpdateStatus.viewStatus(True)
+            validator = false
         } else {
-            val intent = Intent(this@UpdateStatus, Login::class.java)
-            startActivity(intent)
+            buttonUpdateStatus.getMargins(MBottom, 12)
+            errUpdateStatus.viewStatus(Miss)
+
         }
+        if (validator) {
+            Get.dialog(
+                this, "Apakah anda yakin", "Ingin Update Status ?",
+                onClickPositive = {
+                    val sharedPreference = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+                    val token: String? = sharedPreference.getString("token", null)
+                    if (token !== null) {
+                        Network.instance.addStatus(statusValue, token)
+                            .enqueue(object : Callback<Map<String, Any>> {
+                                @SuppressLint("WrongViewCast")
+                                override fun onResponse(
+                                    call: Call<Map<String, Any>>,
+                                    response: Response<Map<String, Any>>
+                                ) {
+                                    if (response.isSuccessful) {
+                                        Get.dialogSingle(
+                                            this@UpdateStatus,
+                                            R.layout.success_dialog,
+                                            R.id.successDialogTxt,
+                                            R.id.successDialogButton,
+                                            "Pengajuan Perubahan status berhasil terikirim!",
+                                            singleAction = {
+                                                Get.back(this@UpdateStatus)
+                                            }
+                                        )
+                                        Toast.makeText(
+                                            this@UpdateStatus,
+                                            "Berhasil Update Status",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                        itemList.clear()
+                                        getData()
+                                    } else {
+                                        Get.dialogSingle(
+                                            this@UpdateStatus,
+                                            R.layout.failed_dialog,
+                                            R.id.failedDialogTxt,
+                                            R.id.failedDialogButton,
+                                            "Pengajuan Perubahan status gagal terikirim!",
+                                            singleAction = {
+                                                Get.back(this@UpdateStatus)
+                                            }
+                                        )
+                                        Toast.makeText(
+                                            this@UpdateStatus,
+                                            "Perubahan status gagal terikirim!",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                                }
+
+                                override fun onFailure(call: Call<Map<String, Any>>, t: Throwable) {
+                                    Toast.makeText(
+                                        this@UpdateStatus,
+                                        t.message.toString(),
+                                        Toast.LENGTH_SHORT
+                                    )
+                                        .show()
+                                    Log.e("Terjadi Kesalahan", t.message.toString())
+                                }
+                            })
+                    } else {
+                        Get.offAll(this@UpdateStatus, Login::class.java)
+                    }
+                },
+            )
+        }
+
+
     }
 
     private fun getData() {
@@ -213,8 +259,7 @@ class UpdateStatus : AppCompatActivity() {
                 }
             })
         } else {
-            val intent = Intent(this@UpdateStatus, Login::class.java)
-            startActivity(intent)
+            Get.offAll(this@UpdateStatus, Login::class.java)
         }
     }
 

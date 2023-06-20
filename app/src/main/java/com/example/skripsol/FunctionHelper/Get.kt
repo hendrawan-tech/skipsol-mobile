@@ -13,8 +13,6 @@ import com.example.skripsol.FunctionHelper.GetMaterial.GetButton
 import com.example.skripsol.R
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textview.MaterialTextView
-import android.graphics.*
-import android.opengl.Visibility
 import android.view.View.*
 import android.view.ViewGroup
 

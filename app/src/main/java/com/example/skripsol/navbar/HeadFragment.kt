@@ -3,11 +3,9 @@ package com.example.skripsol.navbar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.OnBackPressedDispatcher
 import androidx.fragment.app.Fragment
 import com.example.skripsol.FunctionHelper.Get
 import com.example.skripsol.R
-import com.example.skripsol.config.Network
 import com.example.skripsol.databinding.HeadFragmentBinding
 import nl.joery.animatedbottombar.AnimatedBottomBar
 
